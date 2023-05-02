@@ -1,0 +1,68 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity tb_esl_demonstrator is
+end entity;
+
+architecture testbench of tb_esl_demonstrator is
+  -- DUT
+  signal dut_clock_50 : std_logic;
+  signal LED         : std_logic_vector(7 downto 0);
+  signal KEY         : std_logic_vector(1 downto 0);
+  signal SW          : std_logic_vector(3 downto 0);
+  signal GPIO_0      : std_logic_vector(33 downto 0);
+  signal GPIO_0_IN   : std_logic_vector(1 downto 0);
+  signal GPIO_1      : std_logic_vector(33 downto 0);
+  signal GPIO_1_IN   : std_logic_vector(1 downto 0);
+
+  -- Create A and B signals for GPIO_0
+  signal gpio_0_a    : std_logic;
+  signal gpio_0_b    : std_logic;
+
+begin
+  -- Instantiate DUT
+  DUT_inst : entity work.esl_demonstrator
+    port map (
+      CLOCK_50  => dut_clock_50,
+      LED       => LED,
+      KEY       => KEY,
+      SW        => SW,
+      GPIO_0    => GPIO_0,
+      GPIO_0_IN => GPIO_0_IN,
+      GPIO_1    => GPIO_1,
+      GPIO_1_IN => GPIO_1_IN
+    );
+
+  -- Connect A and B signals to GPIO_0
+  GPIO_0(0) <= gpio_0_a;
+  GPIO_0(1) <= gpio_0_b;
+
+  -- Create clock signal
+  process
+  begin
+    dut_clock_50 <= '0';
+    wait for 10 ns;
+    dut_clock_50 <= '1';
+    wait for 10 ns;
+  end process;
+
+  -- Create Encoder A signal
+  process
+  begin
+    gpio_0_a  <= '1';
+    wait for 80 ns;
+    gpio_0_a <= '0';
+    wait for 80 ns;
+  end process;
+
+  -- Create Encoder B signal
+  process
+  begin
+    wait for 40 ns;
+    gpio_0_b  <= '1';
+    wait for 80 ns;
+    gpio_0_b <= '0';
+    wait for 40 ns;
+  end process;
+
+end architecture;

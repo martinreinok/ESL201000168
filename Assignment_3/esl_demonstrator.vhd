@@ -12,8 +12,9 @@ entity esl_demonstrator is
 	SW			: in std_logic_vector(3 downto 0);
 
 	-- GPIO_0, GPIO_0 connect to GPIO Default
-	GPIO_0		: inout std_logic_vector(33 downto 0);
-	GPIO_0_IN	: in    std_logic_vector(1 downto 0);
+	GPIO_0		: inout 	std_logic_vector(33 downto 0);
+	GPIO_0_IN	: in    	std_logic_vector(1 downto 0);
+	direction	: out		std_logic;
 
 	-- GPIO_1, GPIO_1 connect to GPIO Default
 	GPIO_1		: inout std_logic_vector(33 downto 0);
@@ -26,12 +27,14 @@ architecture behavior of esl_demonstrator is
 	signal placeholder : std_logic_vector(10 downto 0);
 begin
 	encoder : entity work.QuadratureEncoder
+		GENERIC map (len => 255)
 		port map (
 		-- Map your encoder here to the I/O
 		clock         => CLOCK_50,
-		encoder_out   => GPIO_0(0),
-		encoder_in_a  => GPIO_0(1),
-		encoder_in_b  => GPIO_0(2)	
+		encoder_out   => GPIO_0,
+		encoder_in_a  => GPIO_0_IN(0),
+		encoder_in_b  => GPIO_0_IN(1),	
+		direction	  => direction
 		);
 		
 	-- pwm : entity work.PulseWidthModulator

@@ -2,6 +2,8 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity tb_esl_demonstrator is
+	GENERIC (n : positive := 100;
+				n_2: positive := 200);
 end entity;
 
 architecture testbench of tb_esl_demonstrator is
@@ -12,6 +14,7 @@ architecture testbench of tb_esl_demonstrator is
   signal SW          : std_logic_vector(3 downto 0);
   signal GPIO_0      : std_logic_vector(33 downto 0);
   signal GPIO_0_IN   : std_logic_vector(1 downto 0);
+  signal direction	: std_logic;
   signal GPIO_1      : std_logic_vector(33 downto 0);
   signal GPIO_1_IN   : std_logic_vector(1 downto 0);
 
@@ -29,40 +32,49 @@ begin
       SW        => SW,
       GPIO_0    => GPIO_0,
       GPIO_0_IN => GPIO_0_IN,
+		direction => direction,
       GPIO_1    => GPIO_1,
       GPIO_1_IN => GPIO_1_IN
     );
 
   -- Connect A and B signals to GPIO_0
-  GPIO_0(0) <= gpio_0_a;
-  GPIO_0(1) <= gpio_0_b;
+  GPIO_0_IN(0) <= gpio_0_a;
+  GPIO_0_IN(1) <= gpio_0_b;
 
   -- Create clock signal
   process
-  begin
-    dut_clock_50 <= '0';
-    wait for 10 ns;
-    dut_clock_50 <= '1';
-    wait for 10 ns;
+	  begin
+		 dut_clock_50 <= '0';
+		 wait for 10 ns;
+		 dut_clock_50 <= '1';
+		 wait for 10 ns;
   end process;
-
-  -- Create Encoder A signal
-  process
+  
+  PROCESS 
   begin
-    gpio_0_a  <= '1';
-    wait for 80 ns;
-    gpio_0_a <= '0';
-    wait for 80 ns;
-  end process;
-
-  -- Create Encoder B signal
-  process
-  begin
-    wait for 40 ns;
-    gpio_0_b  <= '1';
-    wait for 80 ns;
-    gpio_0_b <= '0';
-    wait for 40 ns;
-  end process;
+	  FOR i IN 0 to 10 LOOP
+		  -- Create Encoder A signal
+			 gpio_0_a  <= '1';
+			 wait for 40 ns;
+			 gpio_0_b  <= '1';
+			 wait for 40 ns;
+			 gpio_0_a <= '0';
+			 wait for 40 ns;
+			 gpio_0_b <= '0';
+			 wait for 40 ns;
+	  END LOOP;
+	  wait for 100 ns;
+	  
+	  FOR i IN 0 to 20 LOOP
+			 gpio_0_a  <= '0';
+			 wait for 40 ns;
+			 gpio_0_b  <= '1';
+			 wait for 40 ns;
+			 gpio_0_a <= '1';
+			 wait for 40 ns;
+			 gpio_0_b <= '0';
+			 wait for 40 ns;
+		 END LOOP;
+	END PROCESS;
 
 end architecture;

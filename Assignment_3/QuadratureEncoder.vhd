@@ -16,7 +16,7 @@ end entity;
 architecture Behavioral of QuadratureEncoder is
     signal a_last, b_last : std_logic;
 	-- What should the range be??
-    signal count : integer range -len to len := 0; -- Make generic 
+    signal count : integer range 0 to len := 0; -- Make generic 
 begin
     process (clock)
     begin
@@ -24,14 +24,14 @@ begin
             if a_last /= encoder_in_a then
                 if encoder_in_b /= a_last then
 							if count >= 255 then
-								count <= -255;
+								count <= 0;
 							else 
 							  count <= count + 1;
 						   end if;
 							
 						  direction <= '1';
                 else
-							if count <= -255 then
+							if count <= 0 then
 								count <= 255;
 							else 
 							  count <= count - 1;
@@ -40,7 +40,7 @@ begin
                 end if;
             elsif b_last /= encoder_in_b then
                 if encoder_in_a /= b_last then
-                    if count <= -255 then
+                    if count <= 0 then
 								count <= 255;
 							else 
 							  count <= count - 1;
@@ -49,7 +49,7 @@ begin
 						  direction <= '0';
                 else
                     if count >= 255 then
-								count <= -255;
+								count <= 0;
 							else 
 							  count <= count + 1;
 						   end if;

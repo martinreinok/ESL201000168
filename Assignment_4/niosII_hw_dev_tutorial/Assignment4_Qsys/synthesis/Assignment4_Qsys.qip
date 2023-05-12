@@ -2,14 +2,14 @@ set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -na
 set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name IP_TOOL_VERSION "13.1"
 set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "Assignment4_Qsys" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../Assignment4_Qsys.sopcinfo"]
-set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name SLD_INFO "QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1683116618"
+set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name SLD_INFO "QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1683891951"
 set_global_assignment -library "Assignment4_Qsys" -name MISC_FILE [file join $::quartus(qip_path) "../../Assignment4_Qsys.cmp"]
 set_global_assignment -library "Assignment4_Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.regmap"]
 set_global_assignment -library "Assignment4_Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.debuginfo"]
 set_global_assignment -name SYNTHESIS_ONLY_QIP ON
 set_global_assignment -library "Assignment4_Qsys" -name MISC_FILE [file join $::quartus(qip_path) "../../Assignment4_Qsys.qsys"]
 
-set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.v"]
+set_global_assignment -library "Assignment4_Qsys" -name VHDL_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.vhd"]
 set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.v"]
 set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_reset_synchronizer.v"]
 set_global_assignment -library "Assignment4_Qsys" -name SDC_FILE [file join $::quartus(qip_path) "submodules/altera_reset_controller.sdc"]

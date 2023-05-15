@@ -1,5 +1,5 @@
 Flow report for nios2_quartus2_project
-Mon May 15 16:28:17 2023
+Mon May 15 16:41:55 2023
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,22 +40,22 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Flow Failed - Mon May 15 16:28:17 2023     ;
+; Flow Status                        ; Successful - Mon May 15 16:41:50 2023      ;
 ; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; nios2_quartus2_project                     ;
 ; Top-level Entity Name              ; nios2_quartus2_project                     ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE22F17C6                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; N/A until Partition Merge                  ;
-;     Total combinational functions  ; N/A until Partition Merge                  ;
-;     Dedicated logic registers      ; N/A until Partition Merge                  ;
-; Total registers                    ; N/A until Partition Merge                  ;
-; Total pins                         ; N/A until Partition Merge                  ;
-; Total virtual pins                 ; N/A until Partition Merge                  ;
-; Total memory bits                  ; N/A until Partition Merge                  ;
-; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
-; Total PLLs                         ; N/A until Partition Merge                  ;
+; Total logic elements               ; 2,385 / 22,320 ( 11 % )                    ;
+;     Total combinational functions  ; 2,169 / 22,320 ( 10 % )                    ;
+;     Dedicated logic registers      ; 1,437 / 22,320 ( 6 % )                     ;
+; Total registers                    ; 1437                                       ;
+; Total pins                         ; 11 / 154 ( 7 % )                           ;
+; Total virtual pins                 ; 0                                          ;
+; Total memory bits                  ; 192,384 / 608,256 ( 32 % )                 ;
+; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                            ;
+; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
 +------------------------------------+--------------------------------------------+
 
 
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 05/15/2023 16:28:14    ;
+; Start date & time ; 05/15/2023 16:41:16    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; nios2_quartus2_project ;
 +-------------------+------------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                              ; Default Value ; Entity Name                                           ; Section Id ;
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 0.168416089417114                                                  ; --            ; --                                                    ; --         ;
+; COMPILER_SIGNATURE_ID               ; 0.168416167517305                                                  ; --            ; --                                                    ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                               ; --            ; Assignment4_Qsys                                      ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                               ; --            ; Assignment4_Qsys_cpu                                  ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                               ; --            ; Assignment4_Qsys_irq_mapper                           ; --         ;
@@ -179,29 +179,38 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------------------------------------------------+------------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------+
-; Flow Elapsed Time                                                                                                        ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:03     ; 1.0                     ; 425 MB              ; 00:00:03                           ;
-; Total                ; 00:00:03     ; --                      ; --                  ; 00:00:03                           ;
-+----------------------+--------------+-------------------------+---------------------+------------------------------------+
++-------------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                             ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis      ; 00:00:11     ; 1.0                     ; 490 MB              ; 00:00:11                           ;
+; Fitter                    ; 00:00:15     ; 1.6                     ; 731 MB              ; 00:00:18                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 383 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 489 MB              ; 00:00:04                           ;
+; Total                     ; 00:00:33     ; --                      ; --                  ; 00:00:35                           ;
++---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
-+------------------------------------------------------------------------------------------+
-; Flow OS Summary                                                                          ;
-+----------------------+------------------+------------------+------------+----------------+
-; Module Name          ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
-+----------------------+------------------+------------------+------------+----------------+
-; Analysis & Synthesis ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
-+----------------------+------------------+------------------+------------+----------------+
++-----------------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                               ;
++---------------------------+------------------+------------------+------------+----------------+
+; Module Name               ; Machine Hostname ; OS Name          ; OS Version ; Processor type ;
++---------------------------+------------------+------------------+------------+----------------+
+; Analysis & Synthesis      ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
+; Fitter                    ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
+; Assembler                 ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
+; TimeQuest Timing Analyzer ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
++---------------------------+------------------+------------------+------------+----------------+
 
 
 ------------
 ; Flow Log ;
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
+quartus_fit --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
+quartus_asm --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
+quartus_sta nios2_quartus2_project -c nios2_quartus2_project
 
 
 

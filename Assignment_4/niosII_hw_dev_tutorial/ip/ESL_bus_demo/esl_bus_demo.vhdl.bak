@@ -64,7 +64,7 @@ architecture behavior of esl_bus_demo is
 	end component;
 begin
 	-- Initialization of the example
-	encoder : entity work.QuadratureEncoder
+	encoder : QuadratureEncoder
 	generic map(
 		len => LED_WIDTH
 	)
@@ -73,7 +73,7 @@ begin
 		reset    => reset,
 		encoder_in_a  => button1,
 		encoder_in_b => button2,
-		encoder_out => user_output
+		output => user_output
 	);
 
 	-- Communication with the bus

@@ -35,6 +35,9 @@ entity esl_bus_demo is
 		slave_writedata		: in  std_logic_vector(DATA_WIDTH-1 downto 0);
 		slave_byteenable	: in  std_logic_vector((DATA_WIDTH/8)-1 downto 0);
 
+		button1			: in std_logic;
+		button2			: in std_logic;
+
 		-- signals to connect to custom user logic
 		user_output		: out std_logic_vector(LED_WIDTH-1 downto 0)
 	);
@@ -55,22 +58,22 @@ architecture behavior of esl_bus_demo is
 		 clk        : in  std_logic;
 		 rst        : in  std_logic;
 		 input	    : in  std_logic_vector(DATA_WIDTH-1 downto 0);
-       cnt_enable : in std_logic;
+       		 cnt_enable : in std_logic;
 		 output     : out std_logic_vector(DATA_WIDTH-1 downto 0)
 	  );
 	end component;
 begin
 	-- Initialization of the example
-	my_ip : esl_bus_demo_example
+	encoder : entity work.QuadratureEncoder
 	generic map(
-		DATA_WIDTH => LED_WIDTH
+		len => 255
 	)
 	port map(
-		clk    => clk,
-		rst    => reset,
-		input  => mem_masked,
-		cnt_enable => enable,
-		output => user_output
+		clock    => clk,
+		reset    => reset,
+		encoder_in_a  => button1,
+		encoder_in_b => button2,
+		encoder_out => user_output
 	);
 
 	-- Communication with the bus

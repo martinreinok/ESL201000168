@@ -6,9 +6,9 @@ entity QuadratureEncoder is
 	GENERIC (len : positive := 255);
     port (
         clock        : in  std_logic;
-	     reset	     : in  std_logic;
-        encoder_out  : out std_logic_vector(2 downto 0);
-	     direction    : out	std_logic; 
+	reset	     : in  std_logic;
+        encoder_out  : out std_logic_vector(7 downto 0);
+	direction    : out	std_logic; 
         encoder_in_a : in  std_logic;
         encoder_in_b : in  std_logic
     );
@@ -65,6 +65,6 @@ begin
         end if;
     end process;
     
-    encoder_out <= std_logic_vector(to_signed(count, 7));
+    encoder_out <= std_logic_vector(to_signed(count, 8));
     
 end Behavioral;

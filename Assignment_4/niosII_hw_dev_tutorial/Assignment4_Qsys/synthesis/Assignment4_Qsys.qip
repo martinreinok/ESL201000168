@@ -2,7 +2,7 @@ set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -na
 set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name IP_TOOL_VERSION "13.1"
 set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name IP_TOOL_ENV "Qsys"
 set_global_assignment -library "Assignment4_Qsys" -name SOPCINFO_FILE [file join $::quartus(qip_path) "../../Assignment4_Qsys.sopcinfo"]
-set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name SLD_INFO "QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1683891951"
+set_global_assignment -entity "Assignment4_Qsys" -library "Assignment4_Qsys" -name SLD_INFO "QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1684159506"
 set_global_assignment -library "Assignment4_Qsys" -name MISC_FILE [file join $::quartus(qip_path) "../../Assignment4_Qsys.cmp"]
 set_global_assignment -library "Assignment4_Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.regmap"]
 set_global_assignment -library "Assignment4_Qsys" -name SLD_FILE [file join $::quartus(qip_path) "Assignment4_Qsys.debuginfo"]
@@ -38,7 +38,7 @@ set_global_assignment -library "Assignment4_Qsys" -name SYSTEMVERILOG_FILE [file
 set_global_assignment -library "Assignment4_Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_slave_translator.sv"]
 set_global_assignment -library "Assignment4_Qsys" -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "submodules/altera_merlin_master_translator.sv"]
 set_global_assignment -library "Assignment4_Qsys" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/esl_bus_demo.vhdl"]
-set_global_assignment -library "Assignment4_Qsys" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/esl_bus_demo_example.vhdl"]
+set_global_assignment -library "Assignment4_Qsys" -name VHDL_FILE [file join $::quartus(qip_path) "submodules/QuadratureEncoder.vhd"]
 set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Assignment4_Qsys_sysid.v"]
 set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Assignment4_Qsys_sys_clk_timer.v"]
 set_global_assignment -library "Assignment4_Qsys" -name VERILOG_FILE [file join $::quartus(qip_path) "submodules/Assignment4_Qsys_jtag_uart.v"]

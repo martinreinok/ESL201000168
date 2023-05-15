@@ -66,7 +66,7 @@ set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/cadence/altera_merlin_master_translator.sv"]
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/synopsys/altera_merlin_master_translator.sv"]
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/esl_bus_demo.vhdl"]
-set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/esl_bus_demo_example.vhdl"]
+set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/QuadratureEncoder.vhd"]
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/Assignment4_Qsys_sysid.vho"]
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/Assignment4_Qsys_sys_clk_timer.vhd"]
 set_global_assignment -library "lib_Assignment4_Qsys" -name MISC_FILE [file join $::quartus(sip_path) "submodules/Assignment4_Qsys_jtag_uart.vhd"]

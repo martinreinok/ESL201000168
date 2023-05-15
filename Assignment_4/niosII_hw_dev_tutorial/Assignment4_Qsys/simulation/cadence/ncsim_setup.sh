@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 13.1 162 linux 2023.05.12.13:45:50
+# ACDS 13.1 162 linux 2023.05.15.16:05:05
 
 # ----------------------------------------
 # ncsim - auto-generated simulation script
@@ -178,7 +178,7 @@ if [ $SKIP_COM -eq 0 ]; then
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/assignment4_qsys_mm_interconnect_0_cpu_instruction_master_translator.vhd"                                        -work mm_interconnect_0                                                        -cdslib ./cds_libs/mm_interconnect_0.cds.lib                                                       
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/assignment4_qsys_mm_interconnect_0_cpu_data_master_translator.vhd"                                               -work mm_interconnect_0                                                        -cdslib ./cds_libs/mm_interconnect_0.cds.lib                                                       
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/esl_bus_demo.vhdl"                                                                                               -work esl_bus_demo_0                                                           -cdslib ./cds_libs/esl_bus_demo_0.cds.lib                                                          
-  ncvhdl -v93 "$QSYS_SIMDIR/submodules/esl_bus_demo_example.vhdl"                                                                                       -work esl_bus_demo_0                                                           -cdslib ./cds_libs/esl_bus_demo_0.cds.lib                                                          
+  ncvhdl -v93 "$QSYS_SIMDIR/submodules/QuadratureEncoder.vhd"                                                                                           -work esl_bus_demo_0                                                           -cdslib ./cds_libs/esl_bus_demo_0.cds.lib                                                          
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sysid.vho"                                                                                      -work sysid                                                                    -cdslib ./cds_libs/sysid.cds.lib                                                                   
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sys_clk_timer.vhd"                                                                              -work sys_clk_timer                                                            -cdslib ./cds_libs/sys_clk_timer.cds.lib                                                           
   ncvhdl -v93 "$QSYS_SIMDIR/submodules/Assignment4_Qsys_jtag_uart.vhd"                                                                                  -work jtag_uart                                                                -cdslib ./cds_libs/jtag_uart.cds.lib                                                               

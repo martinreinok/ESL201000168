@@ -119,10 +119,11 @@ add_interface_port s0 slave_writedata writedata Input -1
 
 # Custom interfaces
 # add_interface_port user_interface (YOUR_PORT) export (DIRECTION) (WIDTH)
-add_interface_port user_interface button1 export Input 1
-add_interface_port user_interface button2 export Input 1
+
 
 add_interface user_interface conduit end
+add_interface_port user_interface button1 export Input 1
+add_interface_port user_interface button2 export Input 1
 add_interface_port user_interface user_output export Output 1
 
 ##
@@ -142,6 +143,9 @@ proc elaborate_me {}  {
 
   ## Set data with for the custom logic
   set_port_property user_output WIDTH $the_led_width
+  set_port_property button1 WIDTH 1
+  set_port_property button2 WIDTH 1
+
   
   ## DO NOT REMOVE:
   ## adding the slave_byteenable and user_byteenable signals only if the data width is greater than 8 bits

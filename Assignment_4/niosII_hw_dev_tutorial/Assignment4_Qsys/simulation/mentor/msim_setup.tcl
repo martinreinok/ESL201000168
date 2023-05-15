@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 13.1 162 linux 2023.05.12.13:45:50
+# ACDS 13.1 162 linux 2023.05.15.16:05:05
 
 # ----------------------------------------
 # Auto-generated simulation script
@@ -221,7 +221,7 @@ alias com {
   vcom     "$QSYS_SIMDIR/submodules/assignment4_qsys_mm_interconnect_0_cpu_instruction_master_translator.vhd"                                        -work mm_interconnect_0                                                       
   vcom     "$QSYS_SIMDIR/submodules/assignment4_qsys_mm_interconnect_0_cpu_data_master_translator.vhd"                                               -work mm_interconnect_0                                                       
   vcom     "$QSYS_SIMDIR/submodules/esl_bus_demo.vhdl"                                                                                               -work esl_bus_demo_0                                                          
-  vcom     "$QSYS_SIMDIR/submodules/esl_bus_demo_example.vhdl"                                                                                       -work esl_bus_demo_0                                                          
+  vcom     "$QSYS_SIMDIR/submodules/QuadratureEncoder.vhd"                                                                                           -work esl_bus_demo_0                                                          
   vcom     "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sysid.vho"                                                                                      -work sysid                                                                   
   vcom     "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sys_clk_timer.vhd"                                                                              -work sys_clk_timer                                                           
   vcom     "$QSYS_SIMDIR/submodules/Assignment4_Qsys_jtag_uart.vhd"                                                                                  -work jtag_uart                                                               

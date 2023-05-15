@@ -281,7 +281,7 @@
    type="VHDL"
    library="esl_bus_demo_0" />
  <file
-   path="Assignment4_Qsys/simulation/submodules/esl_bus_demo_example.vhdl"
+   path="Assignment4_Qsys/simulation/submodules/QuadratureEncoder.vhd"
    type="VHDL"
    library="esl_bus_demo_0" />
  <file

@@ -51,6 +51,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 16)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 552 472 616 488))
 )
 (pin
 	(input)
@@ -67,6 +68,7 @@ applicable agreement for further details.
 		(line (pt 109 12)(pt 113 8))
 	)
 	(text "VCC" (rect 128 7 149 16)(font "Arial" (font_size 6)))
+	(annotation_block (location)(rect 560 496 616 512))
 )
 (pin
 	(output)
@@ -102,7 +104,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 888 320 1512 536)
+	(rect 888 328 1512 544)
 	(text "Assignment4_Qsys" (rect 255 -1 387 14)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 200 25 210)(font "Arial" ))
 	(port
@@ -176,46 +178,54 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
+	(pt 880 464)
+	(pt 784 464)
+)
+(connector
 	(pt 576 464)
-	(pt 576 432)
+	(pt 576 440)
 )
 (connector
-	(pt 808 392)
-	(pt 888 392)
+	(pt 808 400)
+	(pt 888 400)
 )
 (connector
-	(pt 576 432)
-	(pt 888 432)
+	(pt 576 440)
+	(pt 888 440)
 )
 (connector
 	(pt 808 368)
-	(pt 808 392)
+	(pt 808 400)
 )
 (connector
-	(pt 888 504)
-	(pt 792 504)
+	(pt 792 512)
+	(pt 888 512)
 	(bus)
 )
 (connector
-	(pt 792 504)
 	(pt 792 528)
+	(pt 792 512)
 	(bus)
 )
 (connector
-	(pt 888 488)
+	(pt 880 488)
+	(pt 880 496)
+)
+(connector
 	(pt 784 488)
+	(pt 880 488)
 )
 (connector
-	(pt 880 472)
-	(pt 880 464)
-)
-(connector
-	(pt 888 472)
-	(pt 880 472)
+	(pt 880 496)
+	(pt 888 496)
 )
 (connector
 	(pt 880 464)
-	(pt 784 464)
+	(pt 880 480)
+)
+(connector
+	(pt 880 480)
+	(pt 888 480)
 )
 (text "This is the top level for the HW tutorial" (rect 768 264 988 276)(font "Arial" (color 0 0 0)(font_size 8)))
 (text "NiosII QuartusII Project" (rect 768 232 1061 259)(font "Arial" (color 0 0 0)(font_size 18)))

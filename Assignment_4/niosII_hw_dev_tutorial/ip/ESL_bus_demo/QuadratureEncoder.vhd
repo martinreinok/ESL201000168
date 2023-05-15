@@ -22,7 +22,7 @@ begin
     process (clock, reset)
     begin
 	if (reset = '1') then
-	   --encoder_out <= (others => '0');
+	   encoder_out <= (others => '0');
 
         elsif rising_edge(clock) then
             if a_last /= encoder_in_a then

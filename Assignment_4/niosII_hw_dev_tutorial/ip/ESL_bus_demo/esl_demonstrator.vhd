@@ -17,7 +17,7 @@ entity esl_demonstrator is
 	direction	: out		std_logic;	-- not orignal
 
 	-- GPIO_1, GPIO_1 connect to GPIO Default
-	GPIO_1		: in std_logic_vector(33 downto 0); -- not original
+	GPIO_1		: in std_logic_vector(7 downto 0); -- not original
 	GPIO_1_OUT  : out		std_logic -- not original
 	);
 end entity;

@@ -16,7 +16,7 @@ architecture testbench of tb_esl_demonstrator is
   signal GPIO_0      : std_logic_vector(33 downto 0);
   signal GPIO_0_IN   : std_logic_vector(1 downto 0);
   signal direction	: std_logic;
-  signal GPIO_1   : std_logic_vector(33 downto 0);
+  signal GPIO_1   : std_logic_vector(7 downto 0);
   signal GPIO_1_IN   : std_logic_vector(1 downto 0);
   signal GPIO_1_OUT  : std_logic; 
 
@@ -24,7 +24,6 @@ architecture testbench of tb_esl_demonstrator is
   signal gpio_0_a    : std_logic;
   signal gpio_0_b    : std_logic;
   
-  signal gpio_1_sig 	: std_logic_vector(33 downto 0);
 
 begin
   -- Instantiate DUT
@@ -86,8 +85,8 @@ begin
   begin
   
 		FOR i IN 0 to 10 LOOP
-			 GPIO_1 <= std_logic_vector(to_unsigned(i, 34));
-			 wait for 300 ns;
+			 GPIO_1 <= std_logic_vector(to_unsigned(i*5, 8));
+			 wait for 2560 ns;
 			 --wait for i * 20 ns;
 		END LOOP;
 	  wait for 100 ns;

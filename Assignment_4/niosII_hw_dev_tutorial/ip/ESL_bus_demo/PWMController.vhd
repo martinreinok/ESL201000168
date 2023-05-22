@@ -17,7 +17,8 @@ entity PulseWidthModulator is
 end entity;
 
 architecture Behavioral of PulseWidthModulator is
-	signal pwmCnt : integer range 0 to pwmBits - 1;
+	--signal pwmCnt : integer range 0 to pwmBits - 1;
+	signal pwmCnt : integer range 0 to 128;
 	signal clkCnt : integer range 0 to clockDivider - 1;
 	
 	begin
@@ -47,7 +48,7 @@ architecture Behavioral of PulseWidthModulator is
 						pwmCnt <= pwmCnt + 1;
 						pwmOut <= '0';
 					
-						if pwmCnt = pwmBits - 1 then
+						if pwmCnt = 128 - 1 then
 							pwmCnt <= 0;
 						end if;
 					

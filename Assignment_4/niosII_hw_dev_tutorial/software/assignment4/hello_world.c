@@ -37,6 +37,7 @@ int main()
 	while(1){
 		int nReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
 		printf("From the IP: %u \n\r", nReadOut);
+		usleep(100000);
 		//int n2ReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x01);
 		//printf("From the IP: %u \n\r", n2ReadOut);
 		//int n3ReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x02);

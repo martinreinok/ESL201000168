@@ -67,7 +67,7 @@ begin
 	-- Initialization of the example
 	encoder : entity work.QuadratureEncoder
 	generic map(
-		len => LED_WIDTH
+		len => 16000
 	)
 	port map(
 		clock    => clk,

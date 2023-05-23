@@ -27,7 +27,7 @@ begin
         elsif rising_edge(clock) then
             if a_last /= encoder_in_a then
                 if encoder_in_b /= a_last then
-							if count >= len then
+							if count >= len - 1 then
 								count <= 0;
 							else 
 							  count <= count + 1;
@@ -36,7 +36,7 @@ begin
 						  direction <= '1';
                 else
 							if count <= 0 then
-								count <= len;
+								count <= len - 1;
 							else 
 							  count <= count - 1;
 						   end if;  
@@ -45,14 +45,14 @@ begin
             elsif b_last /= encoder_in_b then
                 if encoder_in_a /= b_last then
                     if count <= 0 then
-								count <= len;
+								count <= len - 1;
 							else 
 							  count <= count - 1;
 						   end if;
 							
 						  direction <= '0';
                 else
-                    if count >= len then
+                    if count >= len - 1 then
 								count <= 0;
 							else 
 							  count <= count + 1;

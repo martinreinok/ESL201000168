@@ -18,6 +18,8 @@ architecture Behavioral of QuadratureEncoder is
     signal a_last, b_last : std_logic;
 	-- What should the range be??
     signal count : integer range 0 to len := 0; -- Make generic 
+    signal count_encoder : integer range 0 to len := 0; -- Every 4 encoder pulses 
+
 begin
     process (clock, reset)
     begin
@@ -63,8 +65,15 @@ begin
             a_last <= encoder_in_a;
             b_last <= encoder_in_b;
         end if;
+	if (count % 4 = 0)
+	if (direction = 1)
+	    count_encoder <= count_encoder + 1;
+	else 
+	    count_encoder <= count_encoder - 1;
+	end if;
+	end if;
     end process;
     
-    encoder_out <= std_logic_vector(to_signed(count, 32));
+    encoder_out <= std_logic_vector(to_signed(count_encoder, 32));
     
 end Behavioral;

@@ -40,7 +40,7 @@ applicable agreement for further details.
 	(input)
 	(rect 616 456 784 472)
 	(text "INPUT" (rect 125 0 154 9)(font "Arial" (font_size 6)))
-	(text "KEY[0]" (rect 5 0 39 10)(font "Arial" ))
+	(text "KEY[0]" (rect 5 0 38 10)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -57,7 +57,7 @@ applicable agreement for further details.
 	(input)
 	(rect 616 480 784 496)
 	(text "INPUT" (rect 125 0 154 9)(font "Arial" (font_size 6)))
-	(text "KEY[1]" (rect 5 0 39 10)(font "Arial" ))
+	(text "KEY[1]" (rect 5 0 38 10)(font "Arial" ))
 	(pt 168 8)
 	(drawing
 		(line (pt 84 12)(pt 109 12))
@@ -69,24 +69,6 @@ applicable agreement for further details.
 	)
 	(text "VCC" (rect 128 7 149 16)(font "Arial" (font_size 6)))
 	(annotation_block (location)(rect 560 496 616 512))
-)
-(pin
-	(output)
-	(rect 608 520 784 536)
-	(text "OUTPUT" (rect 137 0 177 9)(font "Arial" (font_size 6)))
-	(text "LED[7..0]" (rect 5 0 49 10)(font "Arial" ))
-	(pt 176 8)
-	(drawing
-		(line (pt 176 8)(pt 124 8))
-		(line (pt 124 4)(pt 98 4))
-		(line (pt 124 12)(pt 98 12))
-		(line (pt 124 12)(pt 124 4))
-		(line (pt 98 4)(pt 94 8))
-		(line (pt 94 8)(pt 98 12))
-		(line (pt 98 12)(pt 94 8))
-	)
-	(flipy)
-	(annotation_block (location)(rect 512 504 576 616))
 )
 (symbol
 	(rect 560 448 592 464)
@@ -138,8 +120,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 184)
 		(output)
-		(text "esl_bus_demo_0_user_interface_user_output[7..0]" (rect 0 0 293 12)(font "Arial" (font_size 8)))
-		(text "esl_bus_demo_0_user_interface_user_output[7..0]" (rect 4 173 297 185)(font "Arial" (font_size 8)))
+		(text "esl_bus_demo_0_user_interface_user_output[31..0]" (rect 0 0 302 12)(font "Arial" (font_size 8)))
+		(text "esl_bus_demo_0_user_interface_user_output[31..0]" (rect 4 173 306 185)(font "Arial" (font_size 8)))
 		(line (pt 0 184)(pt 272 184)(line_width 3))
 	)
 	(drawing
@@ -173,11 +155,6 @@ applicable agreement for further details.
 	(pt 792 368)
 )
 (connector
-	(pt 784 528)
-	(pt 792 528)
-	(bus)
-)
-(connector
 	(pt 880 464)
 	(pt 784 464)
 )
@@ -203,11 +180,6 @@ applicable agreement for further details.
 	(bus)
 )
 (connector
-	(pt 792 528)
-	(pt 792 512)
-	(bus)
-)
-(connector
 	(pt 880 488)
 	(pt 880 496)
 )
@@ -226,6 +198,16 @@ applicable agreement for further details.
 (connector
 	(pt 880 480)
 	(pt 888 480)
+)
+(connector
+	(pt 792 528)
+	(pt 784 528)
+	(bus)
+)
+(connector
+	(pt 792 512)
+	(pt 792 528)
+	(bus)
 )
 (text "This is the top level for the HW tutorial" (rect 768 264 988 276)(font "Arial" (color 0 0 0)(font_size 8)))
 (text "NiosII QuartusII Project" (rect 768 232 1061 259)(font "Arial" (color 0 0 0)(font_size 18)))

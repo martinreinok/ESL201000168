@@ -14,7 +14,7 @@
    <frequency preferredWidth="336" />
   </columns>
  </clocktable>
- <window width="1920" height="1071" x="-9" y="-8" />
+ <window width="1920" height="1071" x="-9" y="88" />
  <library expandedCategories="Project,Library" />
  <generation simulation="VHDL" synthesis="VHDL" />
 </preferences>

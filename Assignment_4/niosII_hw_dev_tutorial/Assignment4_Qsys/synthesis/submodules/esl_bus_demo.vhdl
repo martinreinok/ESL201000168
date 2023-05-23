@@ -39,7 +39,7 @@ entity esl_bus_demo is
 		button2			: in std_logic;
 
 		-- signals to connect to custom user logic
-		user_output		: out std_logic_vector(LED_WIDTH-1 downto 0)
+		user_output		: out std_logic_vector(DATA_WIDTH-1 downto 0)
 	);
 end entity;
 
@@ -48,6 +48,7 @@ architecture behavior of esl_bus_demo is
 	signal enable : std_logic;
 	signal mem        : std_logic_vector(31 downto 0);
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
+	signal encoderOUT : std_logic_vector(31 downto 0);
 
 	-- Definition of the counter
 	component esl_bus_demo_example
@@ -66,14 +67,14 @@ begin
 	-- Initialization of the example
 	encoder : entity work.QuadratureEncoder
 	generic map(
-		len => 255
+		len => LED_WIDTH
 	)
 	port map(
 		clock    => clk,
 		reset    => reset,
 		encoder_in_a  => button1,
 		encoder_in_b => button2,
-		encoder_out => user_output
+		encoder_out => encoderOUT
 	);
 
 	-- Communication with the bus
@@ -83,7 +84,7 @@ begin
 			mem <= (others => '0');
 		elsif (rising_edge(clk)) then
 			if (slave_read = '1') then
-				slave_readdata <= mem;
+				slave_readdata <= encoderOUT;
 			end if;
 			
 			if (slave_write = '1') then

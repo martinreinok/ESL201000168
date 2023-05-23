@@ -7,7 +7,7 @@ entity QuadratureEncoder is
     port (
         clock        : in  std_logic;
 	reset	     : in  std_logic;
-        encoder_out  : out std_logic_vector(7 downto 0);
+        encoder_out  : out std_logic_vector(31 downto 0);
 	direction    : out	std_logic; 
         encoder_in_a : in  std_logic;
         encoder_in_b : in  std_logic
@@ -22,7 +22,7 @@ begin
     process (clock, reset)
     begin
 	if (reset = '1') then
-	   --encoder_out <= (others => '0');
+	   count <= 0;
 
         elsif rising_edge(clock) then
             if a_last /= encoder_in_a then
@@ -65,6 +65,6 @@ begin
         end if;
     end process;
     
-    encoder_out <= std_logic_vector(to_signed(count, 8));
+    encoder_out <= std_logic_vector(to_signed(count, 32));
     
 end Behavioral;

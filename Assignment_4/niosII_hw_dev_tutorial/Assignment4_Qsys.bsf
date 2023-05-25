@@ -54,8 +54,8 @@ applicable agreement for further details.
 	(port
 		(pt 0 184)
 		(output)
-		(text "esl_bus_demo_0_user_interface_user_output[7..0]" (rect 0 0 206 12)(font "Arial" (font_size 8)))
-		(text "esl_bus_demo_0_user_interface_user_output[7..0]" (rect 4 173 286 184)(font "Arial" (font_size 8)))
+		(text "esl_bus_demo_0_user_interface_user_output[31..0]" (rect 0 0 210 12)(font "Arial" (font_size 8)))
+		(text "esl_bus_demo_0_user_interface_user_output[31..0]" (rect 4 173 292 184)(font "Arial" (font_size 8)))
 		(line (pt 0 184)(pt 272 184)(line_width 3))
 	)
 	(drawing

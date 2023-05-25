@@ -142,7 +142,7 @@ proc elaborate_me {}  {
   set_port_property slave_writedata WIDTH $the_data_width
 
   ## Set data with for the custom logic
-  set_port_property user_output WIDTH $the_led_width
+  ## set_port_property user_output WIDTH $the_led_width
   set_port_property button1 WIDTH 1
   set_port_property button2 WIDTH 1
 

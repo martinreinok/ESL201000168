@@ -1,0 +1,196 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+d/home/esl
+Eesl_bus_demo
+Z0 w1685054002
+Z1 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z2 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z3 d/home/esl/Desktop/ESL201000168/Modelsim
+8/home/esl/Desktop/ESL201000168/Assignment_4/niosII_hw_dev_tutorial/ip/ESL_bus_demo/esl_bus_demo.vhdl
+F/home/esl/Desktop/ESL201000168/Assignment_4/niosII_hw_dev_tutorial/ip/ESL_bus_demo/esl_bus_demo.vhdl
+l0
+L20
+VfB0SK1>h8gH;Rl9?>m1=S0
+!s100 nj=S;Y852Y`2a9XeQVnme1
+Z4 OV;C;10.5b;63
+32
+!s110 1685054160
+!i10b 1
+!s108 1685054160.000000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/esl/Desktop/ESL201000168/Assignment_4/niosII_hw_dev_tutorial/ip/ESL_bus_demo/esl_bus_demo.vhdl|
+!s107 /home/esl/Desktop/ESL201000168/Assignment_4/niosII_hw_dev_tutorial/ip/ESL_bus_demo/esl_bus_demo.vhdl|
+!i113 1
+Z5 o-work work -2002 -explicit
+Z6 tExplicit 1 CvgOpt 0
+Eesl_demonstrator
+Z7 w1685056625
+R1
+R2
+R3
+Z8 8/home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd
+Z9 F/home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd
+l0
+L4
+Vk3H6RYUTDnYlWD8AIS>f52
+!s100 :JHJFA:ADKWb[0MTHcObN1
+R4
+32
+Z10 !s110 1685061698
+!i10b 1
+Z11 !s108 1685061698.000000
+Z12 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd|
+Z13 !s107 /home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd|
+!i113 1
+R5
+R6
+Abehavior
+Z14 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z15 DEx4 work 17 quadratureencoder 0 22 jP?zz=hoMIFOT5kEiA=AY1
+R1
+R2
+Z16 DEx4 work 16 esl_demonstrator 0 22 k3H6RYUTDnYlWD8AIS>f52
+l27
+L25
+VoPKo31RL8TYEBoTGNESo;3
+!s100 Dj<:_c=4jWTlg[JN8DOU22
+R4
+32
+R10
+!i10b 1
+R11
+R12
+R13
+!i113 1
+R5
+R6
+Epulsewidthmodulator
+R0
+R14
+R1
+R2
+R3
+Z17 8/home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd
+Z18 F/home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd
+l0
+L5
+VJD9bSHHRI;?<Ai:ABNC543
+!s100 L[KQWRF3Sn7^G97RLfZFC1
+R4
+32
+R10
+!i10b 1
+R11
+Z19 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd|
+Z20 !s107 /home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd|
+!i113 1
+R5
+R6
+Abehavioral
+R14
+R1
+R2
+DEx4 work 19 pulsewidthmodulator 0 22 JD9bSHHRI;?<Ai:ABNC543
+l24
+L19
+VI?<[X?_:jQ=BfzoUVAEQ@1
+!s100 P5707La><MS^_2G60L_aT0
+R4
+32
+R10
+!i10b 1
+R11
+R19
+R20
+!i113 1
+R5
+R6
+Equadratureencoder
+Z21 w1685061462
+R14
+R1
+R2
+R3
+Z22 8/home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd
+Z23 F/home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd
+l0
+L5
+VjP?zz=hoMIFOT5kEiA=AY1
+!s100 D0WkVJ=OFf08H_QaifYc13
+R4
+32
+R10
+!i10b 1
+R11
+Z24 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd|
+Z25 !s107 /home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd|
+!i113 1
+R5
+R6
+Abehavioral
+R14
+R1
+R2
+R15
+l22
+L17
+VCH8^9@@gU2cWWf8YXn9Cd2
+!s100 ]2m^3DzEJZYOozFR1ijX:2
+R4
+32
+R10
+!i10b 1
+R11
+R24
+R25
+!i113 1
+R5
+R6
+Etb_esl_demonstrator
+Z26 w1685057126
+R14
+R1
+R2
+R3
+Z27 8/home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd
+Z28 F/home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd
+l0
+L5
+VBBKIef0hL]E]1Zo1Ek77B2
+!s100 SjfWQ3JJNoKc<XzY<jf@d3
+R4
+32
+R10
+!i10b 1
+R11
+Z29 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|/home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd|
+Z30 !s107 /home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd|
+!i113 1
+R5
+R6
+Atestbench
+R16
+R14
+R1
+R2
+Z31 DEx4 work 19 tb_esl_demonstrator 0 22 BBKIef0hL]E]1Zo1Ek77B2
+l27
+L10
+Z32 VO4<:RkH_OaOdGb`6gi@FB3
+Z33 !s100 DcA4^jbBV_Z4Q_WkZDILA2
+R4
+32
+R10
+!i10b 1
+R11
+R29
+R30
+!i113 1
+R5
+R6

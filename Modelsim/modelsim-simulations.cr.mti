@@ -1,0 +1,39 @@
+/home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/esl/Desktop/ESL201000168/Modelsim/PWMController.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity PulseWidthModulator
+-- Compiling architecture Behavioral of PulseWidthModulator
+
+} {} {}} /home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/esl/Desktop/ESL201000168/Modelsim/esl_demonstrator.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity esl_demonstrator
+-- Compiling architecture behavior of esl_demonstrator
+-- Loading package NUMERIC_STD
+-- Loading entity QuadratureEncoder
+
+} {} {}} /home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/esl/Desktop/ESL201000168/Modelsim/tb_esl_demonstrator.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity tb_esl_demonstrator
+-- Compiling architecture testbench of tb_esl_demonstrator
+-- Loading entity esl_demonstrator
+
+} {} {}} /home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd {1 {vcom -work work -2002 -explicit -stats=none /home/esl/Desktop/ESL201000168/Modelsim/QuadratureEncoder.vhd
+Model Technology ModelSim - Intel FPGA Edition vcom 10.5b Compiler 2016.10 Oct  5 2016
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Compiling entity QuadratureEncoder
+-- Compiling architecture Behavioral of QuadratureEncoder
+
+} {} {}}

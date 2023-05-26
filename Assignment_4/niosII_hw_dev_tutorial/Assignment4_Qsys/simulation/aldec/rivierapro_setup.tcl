@@ -12,7 +12,7 @@
 # or its authorized distributors. Please refer to the applicable 
 # agreement for further details.
 
-# ACDS 13.1 162 linux 2023.05.23.14:44:08
+# ACDS 13.1 162 linux 2023.05.26.11:18:06
 
 # ----------------------------------------
 # Auto-generated simulation script
@@ -228,6 +228,7 @@ alias com {
   vcom  "$QSYS_SIMDIR/submodules/assignment4_qsys_mm_interconnect_0_cpu_data_master_translator.vhd"                                               -work mm_interconnect_0                                                       
   vcom  "$QSYS_SIMDIR/submodules/esl_bus_demo.vhdl"                                                                                               -work esl_bus_demo_0                                                          
   vcom  "$QSYS_SIMDIR/submodules/QuadratureEncoder.vhd"                                                                                           -work esl_bus_demo_0                                                          
+  vcom  "$QSYS_SIMDIR/submodules/PWMController.vhd"                                                                                               -work esl_bus_demo_0                                                          
   vcom  "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sysid.vho"                                                                                      -work sysid                                                                   
   vcom  "$QSYS_SIMDIR/submodules/Assignment4_Qsys_sys_clk_timer.vhd"                                                                              -work sys_clk_timer                                                           
   vcom  "$QSYS_SIMDIR/submodules/Assignment4_Qsys_jtag_uart.vhd"                                                                                  -work jtag_uart                                                               

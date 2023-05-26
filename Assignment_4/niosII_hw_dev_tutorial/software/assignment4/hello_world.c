@@ -27,7 +27,7 @@ int main()
 	printf("Hello from Nios II!\n");
 
 	// Put 0x08 in the memory of the IP and enable the count down
-	IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | 0x08);
+	IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | 0x8000000);
 
 	// Verify that it is there
 	int nReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
@@ -38,12 +38,6 @@ int main()
 		int nReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
 		printf("From the IP: %u \n\r", nReadOut);
 		usleep(100000);
-		//int n2ReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x01);
-		//printf("From the IP: %u \n\r", n2ReadOut);
-		//int n3ReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x02);
-		//printf("From the IP: %u \n\r", n3ReadOut);
-		//int n4ReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x03);
-		//printf("From the IP: %u \n\r", n4ReadOut);
 	}
 
 	return 0;

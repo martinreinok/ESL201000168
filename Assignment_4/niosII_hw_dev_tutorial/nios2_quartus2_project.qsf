@@ -80,7 +80,7 @@ set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 set_location_assignment PIN_R8 -to CLOCK_50
-set_location_assignment PIN_A15 -to LED[0]
+set_location_assignment IOBANK_7 -to LED[0]
 set_location_assignment PIN_A13 -to LED[1]
 set_location_assignment PIN_B13 -to LED[2]
 set_location_assignment PIN_A11 -to LED[3]
@@ -172,7 +172,7 @@ set_location_assignment PIN_B4 -to GPIO_0[5]
 set_location_assignment PIN_A4 -to GPIO_0[6]
 set_location_assignment PIN_B5 -to GPIO_0[7]
 set_location_assignment PIN_A5 -to GPIO_0[8]
-set_location_assignment PIN_D5 -to GPIO_0[9]
+set_location_assignment PIN_A5 -to GPIO_0[9]
 set_location_assignment PIN_B6 -to GPIO_0[10]
 set_location_assignment PIN_A6 -to GPIO_0[11]
 set_location_assignment PIN_B7 -to GPIO_0[12]
@@ -183,10 +183,6 @@ set_location_assignment PIN_C8 -to GPIO_0[16]
 set_location_assignment PIN_E6 -to GPIO_0[17]
 set_location_assignment PIN_E7 -to GPIO_0[18]
 set_location_assignment PIN_D8 -to GPIO_0[19]
-set_location_assignment PIN_E8 -to GPIO_0[20]
-set_location_assignment PIN_F8 -to GPIO_0[21]
-set_location_assignment PIN_F9 -to GPIO_0[22]
-set_location_assignment PIN_E9 -to GPIO_0[23]
 set_location_assignment PIN_C9 -to GPIO_0[24]
 set_location_assignment PIN_D9 -to GPIO_0[25]
 set_location_assignment PIN_E11 -to GPIO_0[26]
@@ -394,4 +390,11 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[10]
 set_global_assignment -name QIP_FILE Assignment4_Qsys/synthesis/Assignment4_Qsys.qip
 set_global_assignment -name SDC_FILE hw_dev_tutorial.sdc
 set_global_assignment -name BDF_FILE nios2_quartus2_project.bdf
+set_location_assignment PIN_F9 -to GPIO_022
+set_location_assignment PIN_E8 -to GPIO_020
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_020
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_022
+set_location_assignment PIN_E9 -to GPIO_021
+set_location_assignment PIN_F8 -to GPIO_023
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_021
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

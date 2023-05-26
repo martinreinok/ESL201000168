@@ -50,6 +50,7 @@ set_module_property VALIDATION_CALLBACK validate_me
 add_file esl_bus_demo.vhdl {SYNTHESIS SIMULATION}
 ## add_file esl_bus_demo_example.vhdl {SYNTHESIS SIMULATION}
 add_file QuadratureEncoder.vhd {SYNTHESIS SIMULATION}
+add_file PWMController.vhd {SYNTHESIS SIMULATION}
 
 ## 
 ## IP parameters
@@ -124,6 +125,7 @@ add_interface_port s0 slave_writedata writedata Input -1
 add_interface user_interface conduit end
 add_interface_port user_interface button1 export Input 1
 add_interface_port user_interface button2 export Input 1
+add_interface_port user_interface pwmOutput1 export Output 1
 add_interface_port user_interface user_output export Output 1
 
 ##

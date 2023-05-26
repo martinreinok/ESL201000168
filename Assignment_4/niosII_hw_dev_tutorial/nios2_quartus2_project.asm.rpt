@@ -1,5 +1,5 @@
 Assembler report for nios2_quartus2_project
-Tue May 23 14:45:06 2023
+Fri May 26 11:20:19 2023
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -39,7 +39,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue May 23 14:45:06 2023 ;
+; Assembler Status      ; Successful - Fri May 26 11:20:19 2023 ;
 ; Revision Name         ; nios2_quartus2_project                ;
 ; Top-level Entity Name ; nios2_quartus2_project                ;
 ; Family                ; Cyclone IV E                          ;
@@ -108,7 +108,7 @@ applicable agreement for further details.
 +----------------+-------------------------------------+
 ; Device         ; EP4CE22F17C6                        ;
 ; JTAG usercode  ; 0xFFFFFFFF                          ;
-; Checksum       ; 0x00303549                          ;
+; Checksum       ; 0x0032D031                          ;
 +----------------+-------------------------------------+
 
 
@@ -119,7 +119,7 @@ applicable agreement for further details.
 +--------------------+---------------------------------+
 ; Device             ; EPCS16                          ;
 ; JTAG usercode      ; 0x00000000                      ;
-; Checksum           ; 0x1CC569F1                      ;
+; Checksum           ; 0x1CC16190                      ;
 ; Compression Ratio  ; 3                               ;
 +--------------------+---------------------------------+
 
@@ -130,14 +130,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 32-bit Assembler
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Tue May 23 14:45:04 2023
+    Info: Processing started: Fri May 26 11:20:16 2023
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 32-bit Assembler was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 387 megabytes
-    Info: Processing ended: Tue May 23 14:45:06 2023
-    Info: Elapsed time: 00:00:02
+    Info: Processing ended: Fri May 26 11:20:19 2023
+    Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 
 

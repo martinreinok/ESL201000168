@@ -285,6 +285,10 @@
    type="VHDL"
    library="esl_bus_demo_0" />
  <file
+   path="Assignment4_Qsys/simulation/submodules/PWMController.vhd"
+   type="VHDL"
+   library="esl_bus_demo_0" />
+ <file
    path="Assignment4_Qsys/simulation/submodules/Assignment4_Qsys_sysid.vho"
    type="VHDL"
    library="sysid" />

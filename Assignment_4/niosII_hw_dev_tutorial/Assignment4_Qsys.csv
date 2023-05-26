@@ -1,12 +1,12 @@
-# system info Assignment4_Qsys on 2023.05.23.14:44:06
+# system info Assignment4_Qsys on 2023.05.26.11:18:05
 system_info:
 name,value
 DEVICE,EP4CE22F17C6
 DEVICE_FAMILY,Cyclone IV E
-GENERATION_ID,1684845766
+GENERATION_ID,1685092603
 #
 #
-# Files generated for Assignment4_Qsys on 2023.05.23.14:44:06
+# Files generated for Assignment4_Qsys on 2023.05.26.11:18:05
 files:
 filepath,kind,attributes,module,is_top
 Assignment4_Qsys/simulation/Assignment4_Qsys.vhd,VHDL,,Assignment4_Qsys,true
@@ -39,6 +39,7 @@ Assignment4_Qsys/simulation/submodules/Assignment4_Qsys_sys_clk_timer.vhd,VHDL,,
 Assignment4_Qsys/simulation/submodules/Assignment4_Qsys_sysid.vho,VHDL,,Assignment4_Qsys_sysid,false
 Assignment4_Qsys/simulation/submodules/esl_bus_demo.vhdl,VHDL,,esl_bus_demo,false
 Assignment4_Qsys/simulation/submodules/QuadratureEncoder.vhd,VHDL,,esl_bus_demo,false
+Assignment4_Qsys/simulation/submodules/PWMController.vhd,VHDL,,esl_bus_demo,false
 Assignment4_Qsys/simulation/submodules/Assignment4_Qsys_mm_interconnect_0.vhd,VHDL,,Assignment4_Qsys_mm_interconnect_0,false
 Assignment4_Qsys/simulation/submodules/assignment4_qsys_mm_interconnect_0_cpu_jtag_debug_module_translator.vhd,VHDL,,Assignment4_Qsys_mm_interconnect_0,false
 Assignment4_Qsys/simulation/submodules/assignment4_qsys_mm_interconnect_0_onchip_mem_s1_translator.vhd,VHDL,,Assignment4_Qsys_mm_interconnect_0,false

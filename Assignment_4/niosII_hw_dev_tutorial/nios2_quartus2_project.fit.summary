@@ -1,15 +1,15 @@
-Fitter Status : Successful - Tue May 23 14:45:01 2023
+Fitter Status : Successful - Fri May 26 11:20:13 2023
 Quartus II 32-bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : nios2_quartus2_project
 Top-level Entity Name : nios2_quartus2_project
 Family : Cyclone IV E
 Device : EP4CE22F17C6
 Timing Models : Final
-Total logic elements : 2,388 / 22,320 ( 11 % )
-    Total combinational functions : 2,205 / 22,320 ( 10 % )
-    Dedicated logic registers : 1,394 / 22,320 ( 6 % )
-Total registers : 1394
-Total pins : 3 / 154 ( 2 % )
+Total logic elements : 2,763 / 22,320 ( 12 % )
+    Total combinational functions : 2,566 / 22,320 ( 11 % )
+    Dedicated logic registers : 1,448 / 22,320 ( 6 % )
+Total registers : 1448
+Total pins : 4 / 154 ( 3 % )
 Total virtual pins : 0
 Total memory bits : 192,384 / 608,256 ( 32 % )
 Embedded Multiplier 9-bit elements : 0 / 132 ( 0 % )

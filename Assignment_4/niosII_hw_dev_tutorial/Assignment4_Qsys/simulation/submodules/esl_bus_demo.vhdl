@@ -38,6 +38,8 @@ entity esl_bus_demo is
 		button1			: in std_logic;
 		button2			: in std_logic;
 
+		pwmOutput1		: out std_logic;
+
 		-- signals to connect to custom user logic
 		user_output		: out std_logic_vector(DATA_WIDTH-1 downto 0)
 	);
@@ -49,6 +51,7 @@ architecture behavior of esl_bus_demo is
 	signal mem        : std_logic_vector(31 downto 0);
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
 	signal encoderOUT : std_logic_vector(31 downto 0);
+
 
 	-- Definition of the counter
 	component esl_bus_demo_example
@@ -76,6 +79,19 @@ begin
 		encoder_in_b => button2,
 		encoder_out => encoderOUT
 	);
+
+	pwm : entity work.PulseWidthModulator
+	generic map(
+		pwmBits => 32,
+		clockDivider => 1
+	)
+	port map(
+		clk    => clk,
+		rst    => reset,
+		dutyCycle  => mem,
+		pwmOut => pwmOutput1
+	);
+
 
 	-- Communication with the bus
 	p_avalon : process(clk, reset)

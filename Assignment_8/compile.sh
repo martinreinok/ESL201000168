@@ -1,0 +1,1 @@
+gcc main.c -o yuv_pipeline $(pkg-config --cflags --libs gstreamer-1.0 gstreamer-app-1.0)

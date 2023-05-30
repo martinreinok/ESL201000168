@@ -35,11 +35,10 @@ static gboolean bus_call (GstBus *bus, GstMessage *msg, gpointer data)
 }
 
 
-GstFlowReturn example_callback(GstAppSink *sink, gpointer data)
+void example_callback()
 {
-  GstSample *sample = gst_app_sink_pull_sample(sink);
-  gst_sample_unref(sample);
-  return GST_FLOW_OK;
+  g_print ("Pipeline callback\n");
+  return;
 }
 
 /**
@@ -76,7 +75,7 @@ int main (int argc, char *argv[])
   // Set properties
   g_object_set(source, "device", "/dev/video0", NULL);
   // g_object_set(encoder, "quality", 100, NULL);
-  g_object_set(sink, "location", "file.yuv", NULL);
+  // g_object_set(sink, "location", "file.yuv", NULL);
 
   // Create caps filter
   caps = gst_caps_new_simple("video/x-raw",
@@ -105,6 +104,7 @@ int main (int argc, char *argv[])
     }
 
   // Callback
+  g_object_set(G_OBJECT(sink), "emit-signals", TRUE, "sync", FALSE, NULL);
   g_signal_connect(sink, "new-sample", G_CALLBACK(example_callback), NULL);
 
   /* Set the pipeline to "playing" state*/

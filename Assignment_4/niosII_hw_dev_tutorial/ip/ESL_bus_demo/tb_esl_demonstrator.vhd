@@ -13,7 +13,7 @@ architecture testbench of tb_esl_demonstrator is
   signal LED         : std_logic_vector(7 downto 0);
   signal KEY         : std_logic_vector(1 downto 0);
   signal SW          : std_logic_vector(3 downto 0);
-  signal GPIO_0      : std_logic_vector(33 downto 0);
+  signal GPIO_0      : std_logic_vector(31 downto 0);
   signal GPIO_0_IN   : std_logic_vector(1 downto 0);
   signal direction	: std_logic;
   signal GPIO_1   : std_logic_vector(7 downto 0);

@@ -83,13 +83,13 @@ begin
 
 	pwm : entity work.PulseWidthModulator
 	generic map(
-		pwmBits => 32,
+		pwmBits => 8,
 		clockDivider => 1
 	)
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem,
+		dutyCycle  => mem_masked,
 		pwmOut => pwmOutput1,
 		dutyOut => dutOut
 	);

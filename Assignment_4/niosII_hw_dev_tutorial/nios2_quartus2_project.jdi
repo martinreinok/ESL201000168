@@ -1,6 +1,6 @@
 <sld_project_info>
   <project>
-    <hash md5_digest_80b="9bac65b0d5430ef26f0f"/>
+    <hash md5_digest_80b="c00afaa891dd469b0940"/>
   </project>
   <file_info>
     <file device="EP4CE22F17C6" path="nios2_quartus2_project.sof" usercode="0xFFFFFFFF"/>
@@ -144,7 +144,7 @@
   <sld_infos>
     <sld_info hpath="Assignment4_Qsys:inst" name="inst">
       <assignment_values>
-        <assignment_value text="QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1685092687"/>
+        <assignment_value text="QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1685453702"/>
       </assignment_values>
       <parameters/>
     </sld_info>

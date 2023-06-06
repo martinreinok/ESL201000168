@@ -51,6 +51,7 @@ architecture behavior of esl_bus_demo is
 	signal mem        : std_logic_vector(31 downto 0);
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
 	signal encoderOUT : std_logic_vector(31 downto 0);
+	signal dutOut     : std_logic_vector(31 downto 0);
 
 
 	-- Definition of the counter
@@ -82,14 +83,15 @@ begin
 
 	pwm : entity work.PulseWidthModulator
 	generic map(
-		pwmBits => 32,
+		pwmBits => 8,
 		clockDivider => 1
 	)
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem,
-		pwmOut => pwmOutput1
+		dutyCycle  => mem_masked,
+		pwmOut => pwmOutput1,
+		dutyOut => dutOut
 	);
 
 
@@ -100,7 +102,7 @@ begin
 			mem <= (others => '0');
 		elsif (rising_edge(clk)) then
 			if (slave_read = '1') then
-				slave_readdata <= encoderOUT;
+				slave_readdata <= dutOut;
 			end if;
 			
 			if (slave_write = '1') then

@@ -175,7 +175,6 @@ set_location_assignment PIN_A5 -to GPIO_0[8]
 set_location_assignment PIN_A5 -to GPIO_0[9]
 set_location_assignment PIN_B6 -to GPIO_0[10]
 set_location_assignment PIN_A6 -to GPIO_0[11]
-set_location_assignment PIN_B7 -to GPIO_0[12]
 set_location_assignment PIN_D6 -to GPIO_0[13]
 set_location_assignment PIN_A7 -to GPIO_0[14]
 set_location_assignment PIN_C6 -to GPIO_0[15]
@@ -397,4 +396,7 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_022
 set_location_assignment PIN_E9 -to GPIO_021
 set_location_assignment PIN_F8 -to GPIO_023
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_021
+set_location_assignment PIN_B7 -to GPIO_012
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_012
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_023
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

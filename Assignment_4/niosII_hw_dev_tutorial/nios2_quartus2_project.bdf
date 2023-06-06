@@ -74,7 +74,7 @@ applicable agreement for further details.
 	(output)
 	(rect 736 552 912 568)
 	(text "OUTPUT" (rect 1 0 41 9)(font "Arial" (font_size 6)))
-	(text "GPIO_0[12]" (rect 90 0 146 10)(font "Arial" ))
+	(text "GPIO_012" (rect 90 0 141 10)(font "Arial" ))
 	(pt 0 8)
 	(drawing
 		(line (pt 0 8)(pt 52 8))
@@ -85,6 +85,7 @@ applicable agreement for further details.
 		(line (pt 82 8)(pt 78 12))
 		(line (pt 78 12)(pt 82 8))
 	)
+	(annotation_block (location)(rect 912 568 968 584))
 )
 (symbol
 	(rect 480 440 512 456)
@@ -102,7 +103,7 @@ applicable agreement for further details.
 	)
 )
 (symbol
-	(rect 888 304 1512 536)
+	(rect 928 312 1552 544)
 	(text "Assignment4_Qsys" (rect 255 -1 387 14)(font "Arial" (font_size 10)))
 	(text "inst" (rect 8 216 25 226)(font "Arial" ))
 	(port
@@ -187,46 +188,6 @@ applicable agreement for further details.
 	(pt 496 456)
 )
 (connector
-	(pt 736 464)
-	(pt 744 464)
-)
-(connector
-	(pt 744 464)
-	(pt 880 464)
-)
-(connector
-	(pt 808 376)
-	(pt 888 376)
-)
-(connector
-	(pt 808 368)
-	(pt 808 376)
-)
-(connector
-	(pt 880 456)
-	(pt 888 456)
-)
-(connector
-	(pt 536 456)
-	(pt 536 416)
-)
-(connector
-	(pt 536 416)
-	(pt 888 416)
-)
-(connector
-	(pt 880 464)
-	(pt 880 456)
-)
-(connector
-	(pt 752 488)
-	(pt 752 472)
-)
-(connector
-	(pt 752 472)
-	(pt 888 472)
-)
-(connector
 	(pt 736 488)
 	(pt 744 488)
 )
@@ -235,20 +196,52 @@ applicable agreement for further details.
 	(pt 752 488)
 )
 (connector
-	(pt 888 488)
-	(pt 880 488)
+	(pt 808 384)
+	(pt 928 384)
 )
 (connector
-	(pt 880 488)
+	(pt 808 368)
+	(pt 808 384)
+)
+(connector
+	(pt 536 456)
+	(pt 536 424)
+)
+(connector
+	(pt 536 424)
+	(pt 928 424)
+)
+(connector
+	(pt 752 488)
+	(pt 752 480)
+)
+(connector
+	(pt 752 480)
+	(pt 928 480)
+)
+(connector
+	(pt 880 496)
+	(pt 928 496)
+)
+(connector
 	(pt 880 512)
+	(pt 880 496)
+)
+(connector
+	(pt 736 464)
+	(pt 744 464)
+)
+(connector
+	(pt 744 464)
+	(pt 928 464)
 )
 (connector
 	(pt 880 512)
 	(pt 736 512)
 )
 (connector
+	(pt 736 512)
 	(pt 736 560)
-	(pt 736 512)
 )
 (junction (pt 800 368))
 (junction (pt 744 464))

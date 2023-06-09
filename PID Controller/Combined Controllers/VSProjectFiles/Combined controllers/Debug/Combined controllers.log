@@ -1,0 +1,4 @@
+﻿  main.c
+F:\UTwente\1st year\ESL\ESL201000168\PID Controller\Combined Controllers\Panmodel.h(41,1): warning C4005: 'xx_variables_size': macro redefinition
+F:\UTwente\1st year\ESL\ESL201000168\PID Controller\Combined Controllers\Tiltmodel.h(40): message : see previous definition of 'xx_variables_size'
+  Combined controllers.vcxproj -> F:\UTwente\1st year\ESL\ESL201000168\PID Controller\Combined Controllers\VSProjectFiles\Combined controllers\Debug\Combined controllers.exe

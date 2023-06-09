@@ -1,35 +1,23 @@
 #include <stdio.h>
 #include <system.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include "io.h"
 
-#define UART_BASE       0x10001000 // Base address of UART peripheral
-
-// Function to initialize the UART
-void uart_init() {
-    // Enable transmit and receive
-    IOWR(UART_BASE, 1, 0x03);
-}
-
-// Function to send a character via UART
-void uart_send_char(char c) {
-    while ((IORD(UART_BASE, 2) & 0x01) == 0); // Wait for the UART to be ready to transmit
-    IOWR(UART_BASE, 0, c);
-}
-
-// Function to receive a character via UART
-char uart_receive_char() {
-    while ((IORD(UART_BASE, 2) & 0x02) == 0); // Wait for a character to be received
-    return IORD(UART_BASE, 0);
-}
-
 int main() {
-    uart_init(); // Initialize the UART
+    int file;
+    char read_buffer[16];
+    char echo_back = "DE0";
+    file = open("dev/uart_0", O_RDWR);
 
-    while (1) {
-        // Read a character from UART and echo it back
-        char c = uart_receive_char();
-        uart_send_char(c);
+    if (file) {
+    	while (1) {
+    	        read(file, &read_buffer, 3);
+    	        write(file, &echo_back, 3);
+    	        usleep(10000000);
+    	        printf("%c \n", read_buffer);
+    	    }
+    	    return 0;
     }
-
-    return 0;
-}
+    printf("File closed");
+    

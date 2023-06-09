@@ -22,22 +22,22 @@
     <ClInclude Include="..\..\EulerAngles.h" />
     <ClInclude Include="..\..\motionprofiles.h" />
     <ClInclude Include="..\..\xxfuncs.h" />
-    <ClInclude Include="..\..\xxinteg.h" />
+    <ClInclude Include="..\..\Paninteg.h" />
     <ClInclude Include="..\..\xxmatrix.h" />
-    <ClInclude Include="..\..\xxmodel.h" />
-    <ClInclude Include="..\..\xxsubmod.h" />
+    <ClInclude Include="..\..\Panmodel.h" />
+    <ClInclude Include="..\..\Pansubmod.h" />
     <ClInclude Include="..\..\xxtypes.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\EulerAngles.c" />
     <ClCompile Include="..\..\motionprofiles.c" />
     <ClCompile Include="..\..\xxfuncs.c" />
-    <ClCompile Include="..\..\xxinteg.c" />
+    <ClCompile Include="..\..\Paninteg.c" />
     <ClCompile Include="..\..\xxinverse.c" />
-    <ClCompile Include="..\..\xxmain.c" />
+    <ClCompile Include="..\..\Panmain.c" />
     <ClCompile Include="..\..\xxmatrix.c" />
-    <ClCompile Include="..\..\xxmodel.c" />
-    <ClCompile Include="..\..\xxsubmod.c" />
+    <ClCompile Include="..\..\Panmodel.c" />
+    <ClCompile Include="..\..\Pansubmod.c" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{354D6039-7E0B-4A7A-813B-0AE84DE22941}</ProjectGuid>

@@ -20,16 +20,16 @@
     <ClInclude Include="..\..\xxfuncs.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\xxinteg.h">
+    <ClInclude Include="..\..\Paninteg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\xxmatrix.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\xxmodel.h">
+    <ClInclude Include="..\..\Panmodel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\xxsubmod.h">
+    <ClInclude Include="..\..\Pansubmod.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\xxtypes.h">
@@ -46,22 +46,22 @@
     <ClCompile Include="..\..\xxfuncs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\xxinteg.c">
+    <ClCompile Include="..\..\Paninteg.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\xxinverse.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\xxmain.c">
+    <ClCompile Include="..\..\Panmain.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\xxmatrix.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\xxmodel.c">
+    <ClCompile Include="..\..\Panmodel.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\xxsubmod.c">
+    <ClCompile Include="..\..\Pansubmod.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

@@ -25,7 +25,46 @@
 #include "../../Tiltsubmod.h"
 #include "../../Pansubmod.h"
 
+
 #include <stdio.h>
+
+# define	PI	3.14159265358979323846
+
+int convertToPwm(XXDouble pidOutput) {
+	const int bitSize = 4096;
+	const int bits = bitSize / 2;
+
+	/* Calculation */
+	return (int)(bits * pidOutput);
+}
+
+float convertPanToRadian(int panEncoderInput) {
+	const int countsPerRev = 2000;
+	const int centerPos = countsPerRev / 2;
+	const float countPerDeg = (float)countsPerRev / 360;
+
+	const float degToRadian = (float)(PI / 180);
+
+	//printf("countPerDeg Tilt: %f \n", countPerDeg);
+	//printf("degToRadian Tilt: %f \n", degToRadian);
+
+	/* Calculation */
+	return (float)(panEncoderInput - centerPos) * (degToRadian / countPerDeg);
+}
+
+float convertTiltToRadian(int tiltEncoderInput) {
+	const int countsPerRev = 500;
+	const int centerPos = countsPerRev / 2;
+	const float countPerDeg = (float)countsPerRev / 360;
+
+	const float degToRadian = (float) (PI / 180);
+
+	//printf("countPerDeg Tilt: %f \n", countPerDeg);
+	//printf("degToRadian Tilt: %f \n", degToRadian);
+
+	/* Calculation */
+	return (float) (tiltEncoderInput - centerPos) * (degToRadian / countPerDeg);
+}
 
 /* The main function */
 int main()
@@ -51,6 +90,9 @@ int main()
 	y_Pan[0] = 0.0;		/* corr */
 	y_Pan[1] = 0.0;		/* out */
 
+	int panEncoder = 1000;
+	int tiltEncoder = 250;
+
 	/* Initialize the submodel itself */
 	TiltInitializeSubmodel(u_Tilt, y_Tilt, Tilt_time);
 	PanInitializeSubmodel(u_Pan, y_Pan, Pan_time);
@@ -63,15 +105,22 @@ int main()
 		if (Tilt_stop_simulation == XXFALSE)
 		{
 			TiltCalculateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+			tiltEncoder += 1;
 		}
 			
 		if (Pan_stop_simulation == XXFALSE)
 		{
 			PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
+			panEncoder += 4;
 		}	
+
+		u_Pan[1] = convertPanToRadian(panEncoder);		// set input controller from Pan encoder value
+		u_Tilt[2] = convertTiltToRadian(tiltEncoder);	// set input controller from Tilt encoder value
 
 		u_Tilt[0] = y_Pan[0];
 
+		// printf("Output Tilt: %f / pwm: %d / encoder: %d / rad: %f\n", y_Tilt[0], convertToPwm(y_Tilt[0]), tiltEncoder, convertTiltToRadian(tiltEncoder));
+		// printf("Output Pan: %f / pwm: %d / encoder: %d / rad: %f\n", y_Pan[1], convertToPwm(y_Pan[1]), panEncoder, convertPanToRadian(panEncoder));
 		printf("Output Tilt: %f \n", y_Tilt[0]);
 		printf("Output Pan: %f \n", y_Pan[1]);
 	}

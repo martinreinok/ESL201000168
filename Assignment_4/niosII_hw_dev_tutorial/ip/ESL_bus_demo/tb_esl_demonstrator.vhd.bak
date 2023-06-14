@@ -59,25 +59,25 @@ begin
 	  FOR i IN 0 to 10 LOOP
 		  -- Create Encoder A signal
 			 gpio_0_a  <= '1';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_b  <= '1';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_a <= '0';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_b <= '0';
-			 wait for 400 ns;
+			 wait for 40 ns;
 	  END LOOP;
 	  wait for 100 ns;
 	  
 	  FOR i IN 0 to 20 LOOP
 			 gpio_0_a  <= '0';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_b  <= '1';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_a <= '1';
-			 wait for 400 ns;
+			 wait for 40 ns;
 			 gpio_0_b <= '0';
-			 wait for 400 ns;
+			 wait for 40 ns;
 		 END LOOP;
 	END PROCESS;
 	

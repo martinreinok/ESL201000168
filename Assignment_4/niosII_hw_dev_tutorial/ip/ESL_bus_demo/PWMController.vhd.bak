@@ -63,5 +63,5 @@ architecture Behavioral of PulseWidthModulator is
 			end if;
 			
 		end process;
-		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),pwmBits));
+		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),32));
 	end Behavioral;

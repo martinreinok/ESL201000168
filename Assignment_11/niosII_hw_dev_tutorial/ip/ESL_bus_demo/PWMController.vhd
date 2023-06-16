@@ -14,7 +14,7 @@ entity PulseWidthModulator is
 		dutyCycle	: IN	std_logic_vector(pwmBits -1 downto 0);
 		pwmOut	: OUT	std_logic;
 		--dutyOut : OUT std_logic_vector(pwmBits -1 downto 0)
-		dutyOut : OUT std_logic_vector(31 downto 0)
+		dutyOut : OUT std_logic_vector(pwmBits-1 downto 0)
 	);
 end entity;
 
@@ -63,5 +63,5 @@ architecture Behavioral of PulseWidthModulator is
 			end if;
 			
 		end process;
-		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),32));
+		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),pwmBits));
 	end Behavioral;

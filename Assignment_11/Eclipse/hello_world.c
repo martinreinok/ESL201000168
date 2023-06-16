@@ -233,6 +233,7 @@
 
 #include <stdio.h>
 #include <system.h>
+#include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include "io.h"
@@ -280,6 +281,15 @@ float convertTiltToRadian(int tiltEncoderInput) {
 }
 
 int main() {
+	// Say hello through the debug interface
+	printf("Hello from Nios II!\n");
+
+	// Put 0x08 in the memory of the IP and enable the count down
+	IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | 0x20);
+
+	// Verify that it is there
+	int nReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+	printf("From the IP: %u \n\r", nReadOut);
 
 	XXDouble u_Tilt[3 + 1];
 	XXDouble y_Tilt[1 + 1];
@@ -308,14 +318,14 @@ int main() {
     int file;
     char read_buffer[16];
     //char echo_back = "DE0";
-    file = open("dev/uart_0", O_RDWR);
+    //file = open("dev/uart_0", O_RDWR);
 
-    if (file) {
+    //if (file) {
     	while (1) {
-    	        read(file, &read_buffer, 3);
+    	        //read(file, &read_buffer, 3);
     	        // write(file, &echo_back, 3);
     	        usleep(10000000);
-    	        printf("%c \n", read_buffer);
+    	        //printf("%c \n", read_buffer);
 
 				while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
 				{
@@ -349,7 +359,7 @@ int main() {
 						PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
 					}	
 
-					pwmPan = convertToPwm(y_Pan[1])
+					int pwmPan = convertToPwm(y_Pan[1]);
 					printf("To the IP: %u \n\r", pwmPan);
 					IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
 				}
@@ -359,7 +369,7 @@ int main() {
 				PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
     	    }
     	   
-    }
+    //}
 	
     printf("File closed");
     return 0;

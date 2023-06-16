@@ -102,7 +102,7 @@ begin
 			mem <= (others => '0');
 		elsif (rising_edge(clk)) then
 			if (slave_read = '1') then
-				slave_readdata <= encoderOUT;
+				slave_readdata <= dutOut;
 			end if;
 			
 			if (slave_write = '1') then

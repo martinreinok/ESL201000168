@@ -29,12 +29,32 @@ int main(int argc, char* argv[])
   unsigned short value = 100;
   
   // write the value to idx 2
-  int idx = 2;
-  Device.setValue(value, idx);
-  printf("Set value of %i to idx %d.\n", value, idx);  
+  // int idx = 2;
+  // Device.setValue(value, idx);
+  // printf("Set value of %i to idx %d.\n", idx, idx); 
+
+  // write the value to idx 2
+  // idx = 3;
+  // Device.setValue(value, idx);
+  // printf("Set value of %i to idx %d.\n", idx, idx);
+
+  // read the value back from idx 0
+  int idx = 0;
+  value = Device.getValue(idx);;
+  printf("read back : %i from idx %d\n", value, idx);
+
+  // read the value back from idx 1
+  idx = 1;
+  value = Device.getValue(idx);;
+  printf("read back : %i from idx %d\n", value, idx);
 
   // read the value back from idx 0
   idx = 2;
+  value = Device.getValue(idx);;
+  printf("read back : %i from idx %d\n", value, idx);
+
+  // read the value back from idx 1
+  idx = 3;
   value = Device.getValue(idx);;
   printf("read back : %i from idx %d\n", value, idx);
   

@@ -94,9 +94,6 @@ begin
       GPMC_nCS6     => GPMC_nCS6,
       GPMC_CLK      => GPMC_CLK
     );
-	 
-	 in_reg0 <= "0011000000111001";
-	 in_reg1 <= out_reg2;
 
 
 end architecture;

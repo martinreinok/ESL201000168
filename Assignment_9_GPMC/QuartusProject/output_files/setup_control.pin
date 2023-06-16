@@ -27,7 +27,7 @@
  -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
  --                 of its bank.
  --					Bank 1:		2.5V
- --					Bank 2:		2.5V
+ --					Bank 2:		3.3V
  --					Bank 3:		2.5V
  --					Bank 4:		2.5V
  --					Bank 5:		2.5V
@@ -98,11 +98,11 @@ TCK                          : 27        : input  :                   :         
 TMS                          : 28        : input  :                   :         : 1         :                
 TDO                          : 29        : output :                   :         : 1         :                
 nCE                          : 30        :        :                   :         : 1         :                
-CLOCK_50                     : 31        : input  : 2.5 V             :         : 1         : N              
+GND+                         : 31        :        :                   :         : 1         :                
 GND+                         : 32        :        :                   :         : 1         :                
-GND+                         : 33        :        :                   :         : 2         :                
+CLOCK_50                     : 33        : input  : 3.3-V LVTTL       :         : 2         : Y              
 GND+                         : 34        :        :                   :         : 2         :                
-VCCIO2                       : 35        : power  :                   : 2.5V    : 2         :                
+VCCIO2                       : 35        : power  :                   : 3.3V    : 2         :                
 GND                          : 36        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 37        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 38        :        :                   :         : 2         :                
@@ -114,7 +114,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : 43        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : 44        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 45        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 46        :        :                   :         : 2         :                
-VCCIO2                       : 47        : power  :                   : 2.5V    : 2         :                
+VCCIO2                       : 47        : power  :                   : 3.3V    : 2         :                
 GND                          : 48        : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 49        :        :                   :         : 2         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 50        :        :                   :         : 2         :                
@@ -160,32 +160,32 @@ GND+                         : 89        :        :                   :         
 GND+                         : 90        :        :                   :         : 3         :                
 GND+                         : 91        :        :                   :         : 4         :                
 GND+                         : 92        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 93        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 94        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 95        :        :                   :         : 4         :                
+GPMC_DATA[0]                 : 93        : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[1]                 : 94        : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[2]                 : 95        : bidir  : 2.5 V             :         : 4         : Y              
 VCCIO4                       : 96        : power  :                   : 2.5V    : 4         :                
 GND                          : 97        : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 98        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 99        :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 100       :        :                   :         : 4         :                
+GPMC_DATA[3]                 : 98        : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[4]                 : 99        : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[5]                 : 100       : bidir  : 2.5 V             :         : 4         : Y              
 VCCINT                       : 101       : power  :                   : 1.2V    :           :                
 GND                          : 102       : gnd    :                   :         :           :                
-GPMC_DATA[7]                 : 103       : bidir  : 2.5 V             :         : 4         : N              
+GPMC_DATA[6]                 : 103       : bidir  : 2.5 V             :         : 4         : Y              
 VCCIO4                       : 104       : power  :                   : 2.5V    : 4         :                
 GND                          : 105       : gnd    :                   :         :           :                
-GPMC_DATA[6]                 : 106       : bidir  : 2.5 V             :         : 4         : N              
-GPMC_ADDR[4]                 : 107       : input  : 2.5 V             :         : 4         : N              
+GPMC_DATA[7]                 : 106       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[8]                 : 107       : bidir  : 2.5 V             :         : 4         : Y              
 VCCINT                       : 108       : power  :                   : 1.2V    :           :                
 GND                          : 109       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 110       :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 111       :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 112       :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 113       :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 114       :        :                   :         : 4         :                
+GPMC_DATA[9]                 : 110       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[10]                : 111       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[11]                : 112       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[12]                : 113       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[13]                : 114       : bidir  : 2.5 V             :         : 4         : Y              
 VCCINT                       : 115       : power  :                   : 1.2V    :           :                
 GND                          : 116       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 117       :        :                   :         : 4         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 118       :        :                   :         : 4         :                
+GPMC_DATA[14]                : 117       : bidir  : 2.5 V             :         : 4         : Y              
+GPMC_DATA[15]                : 118       : bidir  : 2.5 V             :         : 4         : Y              
 VCCINT                       : 119       : power  :                   : 1.2V    :           :                
 GND                          : 120       : gnd    :                   :         :           :                
 VCCD_PLL4                    : 121       : power  :                   : 1.2V    :           :                
@@ -193,31 +193,31 @@ GNDA4                        : 122       : gnd    :                   :         
 VCCA4                        : 123       : power  :                   : 2.5V    :           :                
 VCCIO5                       : 124       : power  :                   : 2.5V    : 5         :                
 GND                          : 125       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 126       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 127       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 128       :        :                   :         : 5         :                
+GPMC_ADDR[1]                 : 126       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[2]                 : 127       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[3]                 : 128       : input  : 2.5 V             :         : 5         : Y              
 VCCINT                       : 129       : power  :                   : 1.2V    :           :                
 GND                          : 130       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 131       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 132       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 133       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 134       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 135       :        :                   :         : 5         :                
+GPMC_ADDR[4]                 : 131       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[5]                 : 132       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[6]                 : 133       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[7]                 : 134       : input  : 2.5 V             :         : 5         : Y              
+GPMC_ADDR[8]                 : 135       : input  : 2.5 V             :         : 5         : Y              
 VCCIO5                       : 136       : power  :                   : 2.5V    : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 137       :        :                   :         : 5         :                
+GPMC_ADDR[9]                 : 137       : input  : 2.5 V             :         : 5         : Y              
 GND                          : 138       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 139       :        :                   :         : 5         :                
+GPMC_ADDR[10]                : 139       : input  : 2.5 V             :         : 5         : Y              
 VCCINT                       : 140       : power  :                   : 1.2V    :           :                
 GND                          : 141       : gnd    :                   :         :           :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 142       :        :                   :         : 5         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : 143       :        :                   :         : 5         :                
-GPMC_nPWE                    : 144       : input  : 2.5 V             :         : 5         : N              
-GPMC_ADDR[6]                 : 145       : input  : 2.5 V             :         : 5         : N              
-GPMC_ADDR[2]                 : 146       : input  : 2.5 V             :         : 5         : N              
+GPMC_nOE                     : 142       : input  : 2.5 V             :         : 5         : Y              
+GPMC_nPWE                    : 143       : input  : 2.5 V             :         : 5         : Y              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 144       :        :                   :         : 5         :                
+GPMC_FPGA_IRQ                : 145       : input  : 2.5 V             :         : 5         : Y              
+GPMC_nCS6                    : 146       : input  : 2.5 V             :         : 5         : Y              
 VCCINT                       : 147       : power  :                   : 1.2V    :           :                
 GND                          : 148       : gnd    :                   :         :           :                
-GPMC_ADDR[8]                 : 149       : input  : 2.5 V             :         : 5         : N              
-GPMC_ADDR[9]                 : 150       : input  : 2.5 V             :         : 5         : N              
+GPMC_CLK                     : 149       : input  : 2.5 V             :         : 5         : Y              
+GND+                         : 150       :        :                   :         : 5         :                
 GND+                         : 151       :        :                   :         : 6         :                
 GND+                         : 152       :        :                   :         : 6         :                
 CONF_DONE                    : 153       :        :                   :         : 6         :                
@@ -226,21 +226,21 @@ MSEL0                        : 155       :        :                   :         
 GND                          : 156       : gnd    :                   :         :           :                
 MSEL1                        : 157       :        :                   :         : 6         :                
 MSEL2                        : 158       :        :                   :         : 6         :                
-GPMC_DATA[14]                : 159       : bidir  : 2.5 V             :         : 6         : N              
-GPMC_DATA[0]                 : 160       : bidir  : 2.5 V             :         : 6         : N              
-GPMC_ADDR[10]                : 161       : input  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 159       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 160       :        :                   :         : 6         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 161       :        :                   :         : 6         :                
 ~ALTERA_nCEO~ / RESERVED_OUTPUT_OPEN_DRAIN : 162       : output : 2.5 V             :         : 6         : N              
 VCCINT                       : 163       : power  :                   : 1.2V    :           :                
-GPMC_DATA[1]                 : 164       : bidir  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 164       :        :                   :         : 6         :                
 GND                          : 165       : gnd    :                   :         :           :                
-GPMC_DATA[11]                : 166       : bidir  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 166       :        :                   :         : 6         :                
 VCCINT                       : 167       : power  :                   : 1.2V    :           :                
 GND                          : 168       : gnd    :                   :         :           :                
-GPMC_DATA[12]                : 169       : bidir  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 169       :        :                   :         : 6         :                
 VCCIO6                       : 170       : power  :                   : 2.5V    : 6         :                
-GPMC_ADDR[5]                 : 171       : input  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 171       :        :                   :         : 6         :                
 GND                          : 172       : gnd    :                   :         :           :                
-GPMC_DATA[2]                 : 173       : bidir  : 2.5 V             :         : 6         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 173       :        :                   :         : 6         :                
 VCCINT                       : 174       : power  :                   : 1.2V    :           :                
 GND                          : 175       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 176       :        :                   :         : 6         :                
@@ -250,31 +250,31 @@ GNDA2                        : 179       : gnd    :                   :         
 VCCD_PLL2                    : 180       : power  :                   : 1.2V    :           :                
 VCCINT                       : 181       : power  :                   : 1.2V    :           :                
 GND                          : 182       : gnd    :                   :         :           :                
-GPMC_FPGA_IRQ                : 183       : input  : 2.5 V             :         : 7         : N              
-GPMC_DATA[4]                 : 184       : bidir  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 183       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 184       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 185       :        :                   :         : 7         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 186       :        :                   :         : 7         :                
-GPMC_DATA[8]                 : 187       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_ADDR[3]                 : 188       : input  : 2.5 V             :         : 7         : N              
-GPMC_DATA[5]                 : 189       : bidir  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 187       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 188       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 189       :        :                   :         : 7         :                
 VCCINT                       : 190       : power  :                   : 1.2V    :           :                
 GND                          : 191       : gnd    :                   :         :           :                
 VCCIO7                       : 192       : power  :                   : 2.5V    : 7         :                
 GND                          : 193       : gnd    :                   :         :           :                
-GPMC_DATA[3]                 : 194       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_DATA[9]                 : 195       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_nCS6                    : 196       : input  : 2.5 V             :         : 7         : N              
-GPMC_nOE                     : 197       : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 194       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 195       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 196       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 197       :        :                   :         : 7         :                
 VCCINT                       : 198       : power  :                   : 1.2V    :           :                
 GND                          : 199       : gnd    :                   :         :           :                
-GPMC_DATA[13]                : 200       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_DATA[10]                : 201       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_DATA[15]                : 202       : bidir  : 2.5 V             :         : 7         : N              
-GPMC_ADDR[1]                 : 203       : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 200       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 201       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 202       :        :                   :         : 7         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : 203       :        :                   :         : 7         :                
 VCCINT                       : 204       : power  :                   : 1.2V    :           :                
 GND                          : 205       : gnd    :                   :         :           :                
 VCCIO7                       : 206       : power  :                   : 2.5V    : 7         :                
-GPMC_ADDR[7]                 : 207       : input  : 2.5 V             :         : 7         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 207       :        :                   :         : 7         :                
 GND                          : 208       : gnd    :                   :         :           :                
 GND+                         : 209       :        :                   :         : 7         :                
 GND+                         : 210       :        :                   :         : 7         :                
@@ -291,7 +291,7 @@ VCCINT                       : 220       : power  :                   : 1.2V    
 RESERVED_INPUT_WITH_WEAK_PULLUP : 221       :        :                   :         : 8         :                
 GND                          : 222       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 223       :        :                   :         : 8         :                
-GPMC_CLK                     : 224       : input  : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : 224       :        :                   :         : 8         :                
 VCCIO8                       : 225       : power  :                   : 2.5V    : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : 226       :        :                   :         : 8         :                
 GND                          : 227       : gnd    :                   :         :           :                

@@ -12,7 +12,7 @@ entity esl_demonstrator is
 	SW			: in std_logic_vector(3 downto 0);
 
 	-- GPIO_0, GPIO_0 connect to GPIO Default
-	GPIO_0		: inout 	std_logic_vector(31 downto 0);
+	GPIO_0		: inout 	std_logic_vector(15 downto 0);
 	GPIO_0_IN	: in    	std_logic_vector(1 downto 0);
 	direction	: out		std_logic;	-- not orignal
 
@@ -28,7 +28,7 @@ architecture behavior of esl_demonstrator is
 	signal placeholder : std_logic_vector(10 downto 0);
 begin
 	encoder : entity work.QuadratureEncoder
-		GENERIC map (len => 255)
+		GENERIC map (len => 20000)
 		port map (
 		-- Map your encoder here to the I/O
 		clock         => CLOCK_50,

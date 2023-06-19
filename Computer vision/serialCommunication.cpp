@@ -4,13 +4,12 @@
 #include <unistd.h>
 #include <termios.h>
 #include <string.h>
+#include <opencv2/opencv.hpp>
 
-// #include "..\Computer vision\lightFinder.cpp"
-
-class lightFinder 
+class LightFinder 
 {
 public:
-  lightFinder()
+  LightFinder()
   {
   }
 
@@ -21,7 +20,7 @@ public:
 
         // Convert image to grayscale image
         cv::Mat gray;
-        cv::cvtColor(cv_ptr->image, gray, cv::COLOR_BGR2GRAY);
+        cv::cvtColor(cvImage, gray, cv::COLOR_BGR2GRAY);
 
         // Finding the COG of light
         // Thresholding
@@ -38,7 +37,7 @@ public:
         // Draw point to grayscale image
         cv::Point center_coords(moment.m10/moment.m00, moment.m01/moment.m00);
         cv::circle(gray, center_coords, 5, cv::Scalar(0,0,0), -1);
-  }
+	}
 };
 
 #define SERIAL_PORT "/dev/ttyS0"  
@@ -48,12 +47,12 @@ int main() {
     cv::VideoCapture cap(0);
 	
     if (!cap.isOpened()) {
-        cerr <<"VideoCapture not opened"<<endl;
-        exit(-1);
+        std::cerr <<"VideoCapture not opened"<< std::endl;
+        return -1;
     }
 
     int x, y = 0;
-    lightFinder lightfinder();
+    LightFinder lightfinder;
 
     int serial_fd;
     struct termios tty;
@@ -84,24 +83,26 @@ int main() {
     // Apply the new serial port settings
     tcsetattr(serial_fd, TCSANOW, &tty);
 	
-	while(1) {
+    while(1) {
         cv::Mat frame;
         cap.read(frame);
 
-        lightFinder.image_callback(frame, x, y)
-		// Write data to the serial port
-		char message[] = char(x) + ',' + char(y) ';'; 
+        lightfinder.image_callback(frame, x, y);
+		
+        // Write data to the serial port
+        std::string message = std::to_string(x) + ',' + std::to_string(y) + ';';
+        write(serial_fd, message.c_str(), message.length());
+		std::cout << std::to_string(x) + ", " + std::to_string(y) << std::endl;
 
-		write(serial_fd, message, strlen(message));
+        // Read data from the serial port
+        char buffer[256];
+        // ssize_t bytes_read = read(serial_fd, buffer, sizeof(buffer) - 1);
+        // if (bytes_read > 0) {
+        //     buffer[bytes_read] = '\0';  // Add null terminator to the received data
+        //     printf("Received data: %s\n", buffer);
+        // }
+    }
 
-		// Read data from the serial port
-		char buffer[256];
-		ssize_t bytes_read = read(serial_fd, buffer, sizeof(buffer) - 1);
-		if (bytes_read > 0) {
-			buffer[bytes_read] = '\0';  // Add null terminator to the received data
-			printf("Received data: %s\n", buffer);
-		}
-	}
     // Close the serial port
     close(serial_fd);
     return 0;

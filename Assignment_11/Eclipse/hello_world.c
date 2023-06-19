@@ -233,6 +233,7 @@
 
 #include <stdio.h>
 #include <system.h>
+#include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdint.h>
@@ -281,6 +282,15 @@ float convertTiltToRadian(int tiltEncoderInput) {
 }
 
 int main() {
+	// Say hello through the debug interface
+	printf("Hello from Nios II!\n");
+
+	// Put 0x08 in the memory of the IP and enable the count down
+	IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | 0x20);
+
+	// Verify that it is there
+	int nReadOut = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+	printf("From the IP: %u \n\r", nReadOut);
 
 	XXDouble u_Tilt[3 + 1];
 	XXDouble y_Tilt[1 + 1];
@@ -309,14 +319,23 @@ int main() {
     int file;
     char read_buffer[16];
     //char echo_back = "DE0";
-    file = open("dev/uart_0", O_RDWR);
+    //file = open("dev/uart_0", O_RDWR);
 
+<<<<<<< HEAD
     // if (file) {
     // 	while (1) {
     // 	        read(file, &read_buffer, 3);
     // 	        // write(file, &echo_back, 3);
     // 	        usleep(10000000);
     // 	        printf("%c \n", read_buffer);
+=======
+    //if (file) {
+    	while (1) {
+    	        //read(file, &read_buffer, 3);
+    	        // write(file, &echo_back, 3);
+    	        usleep(10000000);
+    	        //printf("%c \n", read_buffer);
+>>>>>>> b592034238a182b5426e850998de212ef7d28aa6
 
 	// 			while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
 	// 			{
@@ -386,30 +405,17 @@ int main() {
 
 					u_Pan[1] = 0.5*PI;
 
+					int pwmPan = convertToPwm(y_Pan[1]);
+					printf("To the IP: %u \n\r", pwmPan);
+					IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
 				}
 
-				u_Pan[2] = convertPanToRadian(EncoderAxisPan);
-				
-				/* Call the submodel to calculate the output */
-				if (Tilt_stop_simulation == XXFALSE)
-				{
-					TiltCalculateSubmodel(u_Tilt, y_Tilt, Tilt_time);
-				}
-
-				if (Pan_stop_simulation == XXFALSE)
-				{
-					PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
-				}	
-
-				pwmPan = convertToPwm(y_Pan[1])
-				printf("To the IP: %u \n\r", pwmPan);
-				IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
-			}
-
-			/* Perform the final calculations */
-			TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
-			PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
-		}
+				/* Perform the final calculations */
+				TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+				PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
+    	    }
+    	   
+    //}
 	
     printf("File closed");
     return 0;

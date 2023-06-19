@@ -125,7 +125,15 @@ add_interface_port s0 slave_writedata writedata Input -1
 add_interface user_interface conduit end
 add_interface_port user_interface button1 export Input 1
 add_interface_port user_interface button2 export Input 1
-add_interface_port user_interface pwmOutput1 export Output 1
+
+add_interface_port user_interface pwmOutputPan export Output 1
+add_interface_port user_interface pwmDirAPan export Output 1
+add_interface_port user_interface pwmDirBPan export Output 1
+
+add_interface_port user_interface pwmOutputTilt export Output 1
+add_interface_port user_interface pwmDirATilt export Output 1
+add_interface_port user_interface pwmDirBTilt export Output 1
+
 add_interface_port user_interface user_output export Output 1
 
 ##

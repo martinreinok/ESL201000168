@@ -321,21 +321,12 @@ int main() {
     //char echo_back = "DE0";
     //file = open("dev/uart_0", O_RDWR);
 
-<<<<<<< HEAD
     // if (file) {
     // 	while (1) {
     // 	        read(file, &read_buffer, 3);
     // 	        // write(file, &echo_back, 3);
     // 	        usleep(10000000);
     // 	        printf("%c \n", read_buffer);
-=======
-    //if (file) {
-    	while (1) {
-    	        //read(file, &read_buffer, 3);
-    	        // write(file, &echo_back, 3);
-    	        usleep(10000000);
-    	        //printf("%c \n", read_buffer);
->>>>>>> b592034238a182b5426e850998de212ef7d28aa6
 
 	// 			while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
 	// 			{

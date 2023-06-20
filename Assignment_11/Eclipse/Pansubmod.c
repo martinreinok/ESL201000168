@@ -20,8 +20,7 @@
 #include "Paninteg.h"
 #include "xxfuncs.h"
 #include "Pansubmod.h"
-#include "motionprofiles.h"
-#include "EulerAngles.h"
+
 
 /* The submodel I/O variables */
 XXInteger Pan_number_of_inputs = 2;

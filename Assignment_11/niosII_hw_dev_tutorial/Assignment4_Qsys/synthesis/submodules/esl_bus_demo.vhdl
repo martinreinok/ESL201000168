@@ -16,6 +16,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity esl_bus_demo is
 	generic (
@@ -35,10 +36,18 @@ entity esl_bus_demo is
 		slave_writedata		: in  std_logic_vector(DATA_WIDTH-1 downto 0);
 		slave_byteenable	: in  std_logic_vector((DATA_WIDTH/8)-1 downto 0);
 
-		button1			: in std_logic;
-		button2			: in std_logic;
+		encoder1A			: in std_logic;
+		encoder1B			: in std_logic;
+		encoder2A			: in std_logic;
+		encoder2B			: in std_logic;
 
-		pwmOutput1		: out std_logic;
+		pwmOutputPan		: out std_logic;
+		pwmDirAPan			: out std_logic;
+		pwmDirBPan			: out std_logic;
+
+		pwmOutputTilt		: out std_logic;
+		pwmDirATilt			: out std_logic;
+		pwmDirBTilt			: out std_logic;
 
 		-- signals to connect to custom user logic
 		user_output		: out std_logic_vector(DATA_WIDTH-1 downto 0)
@@ -50,8 +59,12 @@ architecture behavior of esl_bus_demo is
 	signal enable : std_logic;
 	signal mem        : std_logic_vector(31 downto 0);
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
-	signal encoderOUT : std_logic_vector(31 downto 0);
-	signal dutOut     : std_logic_vector(31 downto 0);
+	signal encoderPanOUT : std_logic_vector(15 downto 0);
+	signal encoderTiltOUT : std_logic_vector(15 downto 0);
+	-- signal encoderPanOUT : integer RANGE -8192 TO 8191;
+	-- signal encoderTiltOUT : integer RANGE -8192 TO 8191;
+	--signal encoderPanOut     : std_logic_vector(15 downto 0);
+	--signal encoderTiltOut     : std_logic_vector(15 downto 0);
 
 
 	-- Definition of the counter
@@ -69,29 +82,58 @@ architecture behavior of esl_bus_demo is
 	end component;
 begin
 	-- Initialization of the example
-	encoder : entity work.QuadratureEncoder
-	generic map(
-		len => 16000
-	)
+	encoderPan : entity work.QuadratureEncoder
+	-- generic map(
+	-- 	len => 16000
+	-- )
 	port map(
 		clock    => clk,
 		reset    => reset,
-		encoder_in_a  => button1,
-		encoder_in_b => button2,
-		encoder_out => encoderOUT
+		a  => encoder1A,
+		b => encoder1B,
+		position => encoderPanOUT
 	);
 
-	pwm : entity work.PulseWidthModulator
+	encoderTilt : entity work.QuadratureEncoder
+	-- generic map(
+	-- 	len => 16000
+	-- )
+	port map(
+		clock    => clk,
+		reset    => reset,
+		a  => encoder2A,
+		b => encoder2B,
+		position => encoderTiltOUT
+	);
+
+	pwmPan : entity work.PulseWidthModulator
 	generic map(
 		pwmBits => 8,
-		clockDivider => 1
+		clockDivider => 100
 	)
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem_masked,
-		pwmOut => pwmOutput1,
-		dutyOut => dutOut
+		dutyCycle  => mem(15 downto 8),
+		direction => mem(16),
+		pwmOut => pwmOutputPan,
+		pwmAOut => pwmDirAPan,
+		pwmBOut => pwmDirBPan
+	);
+
+	pwmTilt : entity work.PulseWidthModulator
+	generic map(
+		pwmBits => 8,
+		clockDivider => 100
+	)
+	port map(
+		clk    => clk,
+		rst    => reset,
+		dutyCycle  => mem(7 downto 0),
+		direction => mem(17),
+		pwmOut => pwmOutputTilt,
+		pwmAOut => pwmDirATilt,
+		pwmBOut => pwmDirBTilt
 	);
 
 
@@ -102,7 +144,8 @@ begin
 			mem <= (others => '0');
 		elsif (rising_edge(clk)) then
 			if (slave_read = '1') then
-				slave_readdata <= encoderOUT;
+				slave_readdata <= encoderPanOUT & encoderTiltOUT;
+				-- slave_readdata <= std_logic_vector(to_unsigned(encoderPanOUT, 16)) & std_logic_vector(to_unsigned(encoderTiltOUT, 16));
 			end if;
 			
 			if (slave_write = '1') then

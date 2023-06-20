@@ -237,11 +237,12 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdint.h>
+#include <float.h>
 #include "io.h"
 
 /* 20-sim include files */
 #include "Pansubmod.h"
-#include "Tiltsubmod.h"
+//#include "Tiltsubmod.h"
 
 # define	PI	3.1415
 
@@ -313,7 +314,7 @@ int main() {
 	y_Pan[1] = 0.0;		/* out */
 
 	/* Initialize the submodel itself */
-	TiltInitializeSubmodel(u_Tilt, y_Tilt, Tilt_time);
+	//TiltInitializeSubmodel(u_Tilt, y_Tilt, Tilt_time);
 	PanInitializeSubmodel(u_Pan, y_Pan, Pan_time);
 
     int file;
@@ -375,13 +376,23 @@ int main() {
 	while (1) {
 			//read(file, &read_buffer, 3);
 			// write(file, &echo_back, 3);
-			usleep(10000000);
-			printf("%c \n", read_buffer);
+			//usleep(10000000);
+			//printf("%c \n", read_buffer);
+		   printf("test");
 
-			while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
+			//while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
+			while ( 1)//(Pan_time < Pan_finish_time))
 			{
-				int EncoderAxisPan = 0;
-				//int EncoderAxisPan = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+				PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
+				//printf("test2 %d \n", (int)Pan_time);
+
+				int EncoderAxis = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+				int encoderPan = EncoderAxis >> 16;
+				int temp = EncoderAxis << 16;
+				int encoderTilt = temp >> 16;
+				printf("Pan encoder: %d \n", (int)encoderPan);
+				//printf("Pan tilt: %d \n", (int)encoderTilt);
+				usleep(10000);
 				//generate inputs
 				u_Pan[1] = 0;
 				if(Pan_time >= 1){
@@ -395,22 +406,24 @@ int main() {
 				if(Pan_time >= 10){
 
 					u_Pan[1] = 0.5*PI;
-
-					int pwmPan = convertToPwm(y_Pan[1]);
-					printf("To the IP: %u \n\r", pwmPan);
-					IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
 				}
 
+				int pwmPan = convertToPwm(y_Pan[1]);
+
+				//printf("To the IP: %u \n\r", pwmPan);
+				IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
+
 				/* Perform the final calculations */
-				TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+				//TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
 				PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
     	    }
     	   
-    //}
+    }
 	
     printf("File closed");
     return 0;
 }
+
 
 
 

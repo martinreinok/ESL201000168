@@ -20,8 +20,7 @@
 #include "Tiltinteg.h"
 #include "xxfuncs.h"
 #include "Tiltsubmod.h"
-#include "motionprofiles.h"
-#include "EulerAngles.h"
+
 
 /* The submodel I/O variables */
 XXInteger Tilt_number_of_inputs = 3;

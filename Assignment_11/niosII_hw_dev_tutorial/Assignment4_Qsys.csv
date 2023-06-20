@@ -1,12 +1,12 @@
-# system info Assignment4_Qsys on 2023.06.06.10:59:11
+# system info Assignment4_Qsys on 2023.06.20.14:36:57
 system_info:
 name,value
 DEVICE,EP4CE22F17C6
 DEVICE_FAMILY,Cyclone IV E
-GENERATION_ID,1686041870
+GENERATION_ID,1687264536
 #
 #
-# Files generated for Assignment4_Qsys on 2023.06.06.10:59:11
+# Files generated for Assignment4_Qsys on 2023.06.20.14:36:57
 files:
 filepath,kind,attributes,module,is_top
 Assignment4_Qsys/simulation/Assignment4_Qsys.vhd,VHDL,,Assignment4_Qsys,true

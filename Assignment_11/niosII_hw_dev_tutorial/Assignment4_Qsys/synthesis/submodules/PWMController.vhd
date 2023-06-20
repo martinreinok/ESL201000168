@@ -12,9 +12,14 @@ entity PulseWidthModulator is
 		clk	: IN 	std_logic;
 		rst	: IN	std_logic;
 		dutyCycle	: IN	std_logic_vector(pwmBits -1 downto 0);
+		direction	: IN	std_logic;
+
 		pwmOut	: OUT	std_logic;
+		pwmAOut	: OUT	std_logic;
+		pwmBOut	: OUT	std_logic;
+
 		--dutyOut : OUT std_logic_vector(pwmBits -1 downto 0)
-		dutyOut : OUT std_logic_vector(31 downto 0)
+		dutyOut : OUT std_logic_vector(pwmBits-1 downto 0)
 	);
 end entity;
 
@@ -46,7 +51,13 @@ architecture Behavioral of PulseWidthModulator is
 				if rst = '1' then
 					pwmCnt <= 0;
 					pwmOut <= '0';
+					pwmAOut <= '0';
+					pwmBOut <= '0';
 				else
+					
+					pwmAOut <= direction;
+					pwmBOut <= NOT direction;
+
 					if clockDivider = 1 or clkCnt = 0 then
 						pwmCnt <= pwmCnt + 1;
 						pwmOut <= '0';
@@ -63,5 +74,5 @@ architecture Behavioral of PulseWidthModulator is
 			end if;
 			
 		end process;
-		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),32));
+		dutyOut <= std_logic_vector(resize(unsigned(dutyCycle),pwmBits));
 	end Behavioral;

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 16, 2023 11:26:34 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1686907594619</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 20, 2023 2:30:02 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1687264202389</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>/home/esl1-5/Desktop/ESL201000168/Assignment_11/assignment_11_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>/home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo</SopcDesignFile>

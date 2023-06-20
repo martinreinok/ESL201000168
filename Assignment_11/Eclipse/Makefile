@@ -143,14 +143,12 @@ ELF := assignment_11.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS += hello_world.c
-C_SRCS += EulerAngles.c
 C_SRCS += Paninteg.c
 C_SRCS += Panmodel.c
 C_SRCS += Pansubmod.c
 C_SRCS += Tiltinteg.c
 C_SRCS += Tiltmodel.c
 C_SRCS += Tiltsubmod.c
-C_SRCS += motionprofiles.c
 C_SRCS += xxfuncs.c
 C_SRCS += xxinverse.c
 C_SRCS += xxmatrix.c

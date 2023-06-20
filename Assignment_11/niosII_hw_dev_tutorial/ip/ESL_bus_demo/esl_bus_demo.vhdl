@@ -16,6 +16,7 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity esl_bus_demo is
 	generic (
@@ -60,6 +61,8 @@ architecture behavior of esl_bus_demo is
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
 	signal encoderPanOUT : std_logic_vector(15 downto 0);
 	signal encoderTiltOUT : std_logic_vector(15 downto 0);
+	-- signal encoderPanOUT : integer RANGE -8192 TO 8191;
+	-- signal encoderTiltOUT : integer RANGE -8192 TO 8191;
 	--signal encoderPanOut     : std_logic_vector(15 downto 0);
 	--signal encoderTiltOut     : std_logic_vector(15 downto 0);
 
@@ -80,9 +83,9 @@ architecture behavior of esl_bus_demo is
 begin
 	-- Initialization of the example
 	encoderPan : entity work.QuadratureEncoder
-	generic map(
-		len => 16000
-	)
+	-- generic map(
+	-- 	len => 16000
+	-- )
 	port map(
 		clock    => clk,
 		reset    => reset,
@@ -92,9 +95,9 @@ begin
 	);
 
 	encoderTilt : entity work.QuadratureEncoder
-	generic map(
-		len => 16000
-	)
+	-- generic map(
+	-- 	len => 16000
+	-- )
 	port map(
 		clock    => clk,
 		reset    => reset,
@@ -112,7 +115,8 @@ begin
 		clk    => clk,
 		rst    => reset,
 		dutyCycle  => mem(15 downto 8),
-		pwmOut => pwmOutput1,
+		direction => mem(16),
+		pwmOut => pwmOutputPan,
 		pwmAOut => pwmDirAPan,
 		pwmBOut => pwmDirBPan
 	);
@@ -126,7 +130,8 @@ begin
 		clk    => clk,
 		rst    => reset,
 		dutyCycle  => mem(7 downto 0),
-		pwmOut => pwmOutput1,
+		direction => mem(17),
+		pwmOut => pwmOutputTilt,
 		pwmAOut => pwmDirATilt,
 		pwmBOut => pwmDirBTilt
 	);
@@ -140,6 +145,7 @@ begin
 		elsif (rising_edge(clk)) then
 			if (slave_read = '1') then
 				slave_readdata <= encoderPanOUT & encoderTiltOUT;
+				-- slave_readdata <= std_logic_vector(to_unsigned(encoderPanOUT, 16)) & std_logic_vector(to_unsigned(encoderTiltOUT, 16));
 			end if;
 			
 			if (slave_write = '1') then

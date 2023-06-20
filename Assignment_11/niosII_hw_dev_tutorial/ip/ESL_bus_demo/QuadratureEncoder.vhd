@@ -1,274 +1,67 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+library IEEE;
+	use IEEE.std_logic_1164.all;
+	use IEEE.numeric_std.all;
 
-entity QuadratureEncoder is
-    GENERIC (
-	len : integer := 20000;	-- Length of maximum encoder counting; 
-	debounce_time	: positive := 3;	-- Amount of clockcycles that the program waits before receiving new values
-	set_origin_debounce_time : INTEGER := 500_000);     
-    port (
-        clock        : in  std_logic;
-	reset		: in std_logic;
-        --encoder_pulses  : out std_logic_vector(31 downto 0);
-        direction    : out std_logic; 
-        encoder_in_a : in  std_logic;
-        encoder_in_b : in  std_logic;
-        encoder_out  : out std_logic_vector(15 downto 0)
-    );
-end entity;
+entity quad_encoder is
+	port (
+		clk 		: in std_logic;
+		a		 	: in std_logic;
+		b			: in std_logic;
+		reset 		: in std_logic;
+		position	: out std_logic_vector(15 downto 0)
+	);
+end quad_encoder;
 
-architecture Behavioral of QuadratureEncoder is
-	SIGNAL a_new, b_new, a_last, b_last : STD_LOGIC := '0';
-	SIGNAL debounceCNT : INTEGER RANGE 0 to debounce_time;
-	SIGNAL count : integer RANGE 0 to len;
-	SIGNAL new_direction : STD_LOGIC;
-    --signal a_last, b_last : std_logic;
-    --signal count_pulse : integer range 0 to len := 0;
-    --signal count : integer range 0 to len := 0;
-    --signal last_direction : std_logic := '0';
+architecture imp of quad_encoder is
+	function gray_code_inc(	prev_input 	: std_logic_vector(1 downto 0);
+							new_input 	: std_logic_vector(1 downto 0)) return boolean is
+	begin
+		case prev_input is
+			when "00" => return new_input = "01";
+			when "01" => return new_input = "11";
+			when "11" => return new_input = "10";
+			when "10" => return new_input = "00";
+			when others => return true;
+		end case;
+	end function;
+
+	signal ab_input : std_logic_vector(1 downto 0);
+
+	signal debounced_ab : std_logic_vector(1 downto 0);
+
+	signal prev_ab : std_logic_vector(1 downto 0);
+
+	signal num_position : unsigned(15 downto 0);
+
 begin
-	debounce : process(clock)
+	ab_input <= a & b;
+
+	position <= std_logic_vector(num_position);
+
+	debounce : process(clk, reset) 
 	begin
-		a_new <= encoder_in_a;
-		b_new <= encoder_in_b;
-		if rising_edge(clock) then
-			if(debounceCNT < debounce_time) then
-				debounceCNT <= debounceCNT + 1;
-			else
-				debounceCNT <= 0;
-				
-			end if;
-		end if;
-		
-	end process; 
-
-	encodercount :process(clock, reset)
-	begin
-		
-
-		if(reset = '1') then
-		count <= len / 2;
-		a_last <= '0';
-		b_last <= '0';
-		
-		elsif (debounceCNT = 0) then
-			
-			if(((a_last XOR a_new) OR (b_last XOR b_new)) = '1' ) then
-				new_direction <= b_last XOR a_new;
-
-				if((b_last XOR a_new) = '1') then
-					if(count < len -1) then
-						count <= count + 1;
-					else
-						count <= 0;
-					end if;
-				else
-					if(count > 0) then
-						count <= count - 1;
-					else
-						count <= len;
-					end if;
-				end if;
-			end if;
-			a_last <= a_new;
-			b_last <= b_new;
+		if reset = '0' then
+			debounced_ab <= (others => '0');
+		elsif rising_edge(clk) then
+			debounced_ab <= ab_input;
 		end if;
 	end process;
-	direction <= new_direction;
-	encoder_out <= std_logic_vector(to_signed(count, 16));
------------------------------------------------------------------------------------
------------------------------------------------------------------------------------
---direction <= last_direction;
-    --encoder_out <= std_logic_vector(to_signed(count, 32));
-    -- encoder_pulses <= std_logic_vector(to_signed(count_pulse, 34));
 
-    --process (clock, reset)
---begin
-	--if(reset = '1') then
-		--count <= 0;
-		--count_pulse <= 0;
-	--elsif rising_edge(clock) then
-        --if a_last /= encoder_in_a then
-            --if encoder_in_b /= a_last then
-                --count_pulse <= (count_pulse + 1) mod len;
-                --last_direction <= '1';
-                --if count_pulse mod 4 = 0 then
-                  --count <= (count + 1) mod len;
-                --end if;
-            --else
-                --count_pulse <= (count_pulse - 1) mod len;
-                --last_direction <= '0';
-                --if count_pulse mod 4 = 0 then
-                  --count <= (count - 1) mod len;
-                --end if;
-            --end if;
-        --elsif b_last /= encoder_in_b then
-            --if encoder_in_a /= b_last then
-                --count_pulse <= (count_pulse - 1) mod len;
-                --last_direction <= '0';
-                --if count_pulse mod 4 = 0 then
-                  --count <= (count - 1) mod len;
-                --end if;
-            --else
-                --count_pulse <= (count_pulse + 1) mod len;
-                --last_direction <= '1';
-                --if count_pulse mod 4 = 0 then
-                  --count <= (count + 1) mod len;
-                --end if;
-            --end if;
-        --end if;
-
-        --a_last <= encoder_in_a;
-        --b_last <= encoder_in_b;
-    --end if;
---end process;
-	
-    --direction <= last_direction;
-    --encoder_out <= std_logic_vector(to_signed(count, 32));
-    -- encoder_pulses <= std_logic_vector(to_signed(count_pulse, 34));
-
-
-
-end Behavioral;
-
-
--- LIBRARY IEEE;
--- USE IEEE.std_logic_1164.ALL;
--- USE IEEE.numeric_std.ALL;
-
--- ENTITY QuadratureEncoder IS
--- 	PORT (
--- 	-- CLOCK and reset
--- 	reset		: IN std_logic;
--- 	CLOCK_50	: IN std_logic;
-
--- 	-- Signals from the encoder
--- 	signalA		: IN std_logic;
--- 	signalB		: IN std_logic;
-	
--- 	-- Output step counter in 32 bits signed
--- 	stepCount 	: INOUT integer RANGE -8192 TO 8191;
-
--- 	-- Input stepCount min and max value
--- 	stepCount_min	: IN integer RANGE -8192 TO 0;
--- 	stepCount_max	: IN integer RANGE 0 TO 8191;
-
--- 	--Reset stepcount to 0
--- 	stepReset : IN std_logic
-
--- 	);
--- END ENTITY;
-
--- ARCHITECTURE bhv OF QuadratureEncoder IS
--- 	SIGNAL inputSignals : std_logic_vector(1 downto 0);
-
--- BEGIN
-
--- 	-- Create a process which reacts to the specified signals
--- 	PROCESS(reset, CLOCK_50)
-	
--- 		-- Create variable to keep track of direction, ClockWise
--- 		VARIABLE CW	: std_logic;
--- 		VARIABLE state: integer range 0 to 4;
-		
--- 		-- Variables to keep track of previous states
--- 		VARIABLE oldState : integer range 0 to 4;
-
--- 	BEGIN
-		
--- 		-- Reset everything
--- 		IF reset = '1' THEN
--- 			stepCount <= 0;
--- 			state := 4;
--- 			CW := '0';
-			
--- 		-- If A is detected
--- 		ELSIF rising_edge(CLOCK_50) THEN
-
--- 			IF stepReset = '1' THEN
--- 				stepCount <= 0;
-				
--- 			ELSE
-
--- 				inputSignals <= signalA & signalB;
-				
--- 				IF state = 4 THEN
--- 					--redefine state as the current one is not known, don't do anything else
--- 					CASE inputSignals IS
--- 						WHEN "00" => state := 0;
--- 						WHEN "01" => state := 1;
--- 						WHEN "11" => state := 2;
--- 						WHEN "10" => state := 3;
--- 						WHEN OTHERS => state := 4;
--- 					END CASE;
-					
-					
--- 				ELSE
--- 					CASE inputSignals IS
--- 						WHEN "00" => state := 0;
--- 						WHEN "01" => state := 1;
--- 						WHEN "11" => state := 2;
--- 						WHEN "10" => state := 3;
--- 						WHEN OTHERS => state := 4;
--- 					END CASE;
-					
--- 					--if something has changed, find out if the counter should be increased/decreased and set the rotational direction
--- 					IF state /= oldState THEN
--- 						IF state = oldState + 1 THEN
--- 							CW := '1';
--- 						ELSIF state = 0 AND oldState = 3 THEN
--- 							CW := '1';
-
--- 							IF stepCount < stepCount_max THEN
--- 								stepCount <= stepCount + 1;
--- 							ELSE
--- 								stepCount <= stepCount_max;
--- 							END IF;
-
--- 						ELSIF state = oldState - 1 THEN
--- 							CW := '0';
--- 						ELSIF state = 3 AND oldState = 0 THEN
--- 							CW := '0';
-
--- 							IF stepCount > stepCount_min THEN
--- 								stepCount <= stepCount - 1;
--- 							ELSE
--- 								stepCount <= stepCount_min;
--- 							END IF;
-
--- 						ELSE
--- 							-- if it is not an increase or decrease of one step, assume the rotational direction didn't change and check if the counter should be increased
--- 							IF state < oldState AND CW = '1' THEN
--- 								IF stepCount < stepCount_max THEN
--- 									stepCount <= stepCount + 1;
--- 								ELSE
--- 									stepCount <= stepCount_max;
--- 								END IF;
-
--- 							ELSIF state > oldState AND CW = '0' THEN
--- 								IF stepCount > stepCount_min THEN
--- 									stepCount <= stepCount - 1;
--- 								ELSE
--- 									stepCount <= stepCount_min;
--- 								END IF;
-								
--- 							END IF;
--- 						END IF;
--- 					END IF;
-					
-				
--- 				END IF;
-				
--- 				--store old state for next loop
--- 				oldState := state;
-
--- 			END IF;
-			
--- 		END IF;
-		
--- 	END PROCESS;
-	
-
--- END bhv;
+	check_rotation : process(clk, reset)
+	begin
+		if reset = '0' then
+			prev_ab <= (others => '0');
+			num_position <= to_unsigned(0, num_position'length);
+		elsif rising_edge(clk) then
+			if prev_ab /= debounced_ab then
+				if gray_code_inc(debounced_ab, prev_ab) then
+					num_position <= num_position + 1;
+				else
+					num_position <= num_position - 1;
+				end if;
+			end if;
+			prev_ab <= debounced_ab;
+		end if;
+	end process;
+end architecture;
 

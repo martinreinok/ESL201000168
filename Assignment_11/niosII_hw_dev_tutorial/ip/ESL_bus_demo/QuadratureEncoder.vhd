@@ -2,17 +2,17 @@ library IEEE;
 	use IEEE.std_logic_1164.all;
 	use IEEE.numeric_std.all;
 
-entity quad_encoder is
+entity QuadratureEncoder is
 	port (
-		clk 		: in std_logic;
+		clock 		: in std_logic;
 		a		 	: in std_logic;
 		b			: in std_logic;
 		reset 		: in std_logic;
 		position	: out std_logic_vector(15 downto 0)
 	);
-end quad_encoder;
+end QuadratureEncoder;
 
-architecture imp of quad_encoder is
+architecture imp of QuadratureEncoder is
 	function gray_code_inc(	prev_input 	: std_logic_vector(1 downto 0);
 							new_input 	: std_logic_vector(1 downto 0)) return boolean is
 	begin
@@ -38,21 +38,21 @@ begin
 
 	position <= std_logic_vector(num_position);
 
-	debounce : process(clk, reset) 
+	debounce : process(clock, reset) 
 	begin
 		if reset = '0' then
 			debounced_ab <= (others => '0');
-		elsif rising_edge(clk) then
+		elsif rising_edge(clock) then
 			debounced_ab <= ab_input;
 		end if;
 	end process;
 
-	check_rotation : process(clk, reset)
+	check_rotation : process(clock, reset)
 	begin
 		if reset = '0' then
 			prev_ab <= (others => '0');
 			num_position <= to_unsigned(0, num_position'length);
-		elsif rising_edge(clk) then
+		elsif rising_edge(clock) then
 			if prev_ab /= debounced_ab then
 				if gray_code_inc(debounced_ab, prev_ab) then
 					num_position <= num_position + 1;

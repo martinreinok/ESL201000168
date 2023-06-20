@@ -89,9 +89,9 @@ begin
 	port map(
 		clock    => clk,
 		reset    => reset,
-		encoder_in_a  => encoder1A,
-		encoder_in_b => encoder1B,
-		encoder_out => encoderPanOUT
+		a  => encoder1A,
+		b => encoder1B,
+		position => encoderPanOUT
 	);
 
 	encoderTilt : entity work.QuadratureEncoder
@@ -101,9 +101,9 @@ begin
 	port map(
 		clock    => clk,
 		reset    => reset,
-		encoder_in_a  => encoder2A,
-		encoder_in_b => encoder2B,
-		encoder_out => encoderTiltOUT
+		a  => encoder2A,
+		b => encoder2B,
+		position => encoderTiltOUT
 	);
 
 	pwmPan : entity work.PulseWidthModulator

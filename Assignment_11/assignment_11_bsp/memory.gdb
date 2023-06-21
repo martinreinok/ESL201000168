@@ -3,7 +3,7 @@
 # Machine generated for CPU 'cpu' in SOPC Builder design 'Assignment4_Qsys'
 # SOPC Builder design path: /home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo
 #
-# Generated: Tue Jun 06 09:20:27 CEST 2023
+# Generated: Wed Jun 21 08:40:16 CEST 2023
 
 # DO NOT MODIFY THIS FILE
 #
@@ -47,4 +47,4 @@
 # by allowing GDB to cache memory contents on the host.
 
 # onchip_mem
-memory 0x8000 0xd000 cache
+memory 0x8000 0x10000 cache

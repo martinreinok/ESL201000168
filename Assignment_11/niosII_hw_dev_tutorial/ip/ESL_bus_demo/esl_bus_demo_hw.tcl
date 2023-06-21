@@ -153,6 +153,19 @@ proc elaborate_me {}  {
   set_port_property slave_readdata  WIDTH $the_data_width
   set_port_property slave_writedata WIDTH $the_data_width
 
+  set_port_property encoder1A WIDTH 1
+  set_port_property encoder1B WIDTH 1
+  set_port_property encoder2A WIDTH 1
+  set_port_property encoder2B WIDTH 1
+
+  set_port_property pwmOutputPan WIDTH 1
+  set_port_property pwmDirAPan WIDTH 1
+  set_port_property pwmDirBPan WIDTH 1
+
+  set_port_property pwmOutputTilt WIDTH 1
+  set_port_property pwmDirATilt WIDTH 1
+  set_port_property pwmDirBTilt WIDTH 1
+
   ## Set data with for the custom logic
   ## set_port_property user_output WIDTH $the_led_width
 

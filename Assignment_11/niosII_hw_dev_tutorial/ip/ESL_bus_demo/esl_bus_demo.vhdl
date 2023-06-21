@@ -138,7 +138,7 @@ begin
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem(15 downto 8),
+		dutyCycle  => mem(17 downto 10),
 		direction => mem(30),
 		pwmOut => pwmOutputPan,
 		pwmAOut => pwmDirAPan,

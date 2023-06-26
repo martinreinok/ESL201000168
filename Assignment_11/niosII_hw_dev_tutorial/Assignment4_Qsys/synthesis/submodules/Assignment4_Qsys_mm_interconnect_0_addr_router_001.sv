@@ -136,10 +136,10 @@ module Assignment4_Qsys_mm_interconnect_0_addr_router_001
     // Figure out the number of bits to mask off for each slave span
     // during address decoding
     // -------------------------------------------------------
-    localparam PAD0 = log2ceil(64'h10000 - 64'h8000); 
-    localparam PAD1 = log2ceil(64'h11000 - 64'h10800); 
-    localparam PAD2 = log2ceil(64'h11400 - 64'h11000); 
-    localparam PAD3 = log2ceil(64'h11420 - 64'h11400); 
+    localparam PAD0 = log2ceil(64'h20 - 64'h0); 
+    localparam PAD1 = log2ceil(64'h10000 - 64'h8000); 
+    localparam PAD2 = log2ceil(64'h11000 - 64'h10800); 
+    localparam PAD3 = log2ceil(64'h11400 - 64'h11000); 
     localparam PAD4 = log2ceil(64'h11440 - 64'h11420); 
     localparam PAD5 = log2ceil(64'h11448 - 64'h11440); 
     localparam PAD6 = log2ceil(64'h11450 - 64'h11448); 
@@ -201,28 +201,28 @@ module Assignment4_Qsys_mm_interconnect_0_addr_router_001
         // Sets the channel and destination ID based on the address
         // --------------------------------------------------
 
+    // ( 0x0 .. 0x20 )
+    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h0   ) begin
+            src_channel = 7'b1000000;
+            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
+    end
+
     // ( 0x8000 .. 0x10000 )
-    if ( {address[RG:PAD0],{PAD0{1'b0}}} == 17'h8000   ) begin
+    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h8000   ) begin
             src_channel = 7'b0000010;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 3;
     end
 
     // ( 0x10800 .. 0x11000 )
-    if ( {address[RG:PAD1],{PAD1{1'b0}}} == 17'h10800   ) begin
+    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 17'h10800   ) begin
             src_channel = 7'b0000001;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 0;
     end
 
     // ( 0x11000 .. 0x11400 )
-    if ( {address[RG:PAD2],{PAD2{1'b0}}} == 17'h11000   ) begin
+    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 17'h11000   ) begin
             src_channel = 7'b0100000;
             src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 1;
-    end
-
-    // ( 0x11400 .. 0x11420 )
-    if ( {address[RG:PAD3],{PAD3{1'b0}}} == 17'h11400   ) begin
-            src_channel = 7'b1000000;
-            src_data[PKT_DEST_ID_H:PKT_DEST_ID_L] = 6;
     end
 
     // ( 0x11420 .. 0x11440 )

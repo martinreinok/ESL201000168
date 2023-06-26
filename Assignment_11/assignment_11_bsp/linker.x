@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'Assignment4_Qsys'
  * SOPC Builder design path: /home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo
  *
- * Generated: Wed Jun 21 08:40:16 CEST 2023
+ * Generated: Tue Jun 06 09:20:27 CEST 2023
  */
 
 /*
@@ -51,7 +51,7 @@
 MEMORY
 {
     reset : ORIGIN = 0x8000, LENGTH = 32
-    onchip_mem : ORIGIN = 0x8020, LENGTH = 32736
+    onchip_mem : ORIGIN = 0x8020, LENGTH = 20448
 }
 
 /* Define symbols for each memory base-address */
@@ -367,7 +367,7 @@ SECTIONS
 /*
  * Don't override this, override the __alt_stack_* symbols instead.
  */
-__alt_data_end = 0x10000;
+__alt_data_end = 0xd000;
 
 /*
  * The next two symbols define the location of the default stack.  You can
@@ -383,4 +383,4 @@ PROVIDE( __alt_stack_limit   = __alt_stack_base );
  * Override this symbol to put the heap in a different memory.
  */
 PROVIDE( __alt_heap_start    = end );
-PROVIDE( __alt_heap_limit    = 0x10000 );
+PROVIDE( __alt_heap_limit    = 0xd000 );

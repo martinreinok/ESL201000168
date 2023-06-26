@@ -3,15 +3,12 @@ library IEEE;
 	use IEEE.numeric_std.all;
 
 entity QuadratureEncoder is
-	generic (
-		maxValue : integer := 16000
-	);
 	port (
 		clock 		: in std_logic;
-		encoder_in_a		 	: in std_logic;
-		encoder_in_b			: in std_logic;
+		a		 	: in std_logic;
+		b			: in std_logic;
 		reset 		: in std_logic;
-		encoder_out	: out std_logic_vector(15 downto 0)
+		position	: out std_logic_vector(15 downto 0)
 	);
 end QuadratureEncoder;
 
@@ -37,13 +34,13 @@ architecture imp of QuadratureEncoder is
 	signal num_position : unsigned(15 downto 0);
 
 begin
-	ab_input <= encoder_in_a & encoder_in_b;
+	ab_input <= a & b;
 
-	encoder_out <= std_logic_vector(num_position);
+	position <= std_logic_vector(num_position);
 
 	debounce : process(clock, reset) 
 	begin
-		if reset = '1' then
+		if reset = '0' then
 			debounced_ab <= (others => '0');
 		elsif rising_edge(clock) then
 			debounced_ab <= ab_input;
@@ -52,23 +49,15 @@ begin
 
 	check_rotation : process(clock, reset)
 	begin
-		if reset = '1' then
+		if reset = '0' then
 			prev_ab <= (others => '0');
 			num_position <= to_unsigned(0, num_position'length);
 		elsif rising_edge(clock) then
 			if prev_ab /= debounced_ab then
 				if gray_code_inc(debounced_ab, prev_ab) then
-					if(num_position < to_unsigned(maxValue, num_position'length)) then
-						num_position <= num_position + 1;
-					else
-						num_position <= to_unsigned(0, num_position'length);
-					end if;
+					num_position <= num_position + 1;
 				else
-					if(num_position > 0) then
-						num_position <= num_position - 1;
-					else
-						num_position <= to_unsigned(maxValue - 1, num_position'length);
-					end if;
+					num_position <= num_position - 1;
 				end if;
 			end if;
 			prev_ab <= debounced_ab;

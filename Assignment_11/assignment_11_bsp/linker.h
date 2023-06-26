@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'Assignment4_Qsys'
  * SOPC Builder design path: /home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo
  *
- * Generated: Wed Jun 21 08:40:16 CEST 2023
+ * Generated: Tue Jun 06 09:20:27 CEST 2023
  */
 
 /*
@@ -66,7 +66,7 @@
  */
 
 #define ONCHIP_MEM_REGION_BASE 0x8020
-#define ONCHIP_MEM_REGION_SPAN 32736
+#define ONCHIP_MEM_REGION_SPAN 20448
 #define RESET_REGION_BASE 0x8000
 #define RESET_REGION_SPAN 32
 

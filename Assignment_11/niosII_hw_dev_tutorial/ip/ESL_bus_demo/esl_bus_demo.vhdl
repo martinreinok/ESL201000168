@@ -26,7 +26,7 @@ entity esl_bus_demo is
 	port (
 		-- signals to connect to an Avalon clock source interface
 		clk			: in  std_logic;
-		reset			: in  std_logic := '0';
+		reset			: in  std_logic;
 
 		-- signals to connect to an Avalon-MM slave interface
 		slave_address		: in  std_logic_vector(7 downto 0);
@@ -82,52 +82,28 @@ architecture behavior of esl_bus_demo is
 	end component;
 begin
 	-- Initialization of the example
-	-- encoderPan : entity work.QuadratureEncoder
-	-- -- generic map(
-	-- -- 	len => 16000
-	-- -- )
-	-- port map(
-	-- 	clock    => clk,
-	-- 	rst    => reset,
-	-- 	a  => encoder1A,
-	-- 	b => encoder1B,
-	-- 	position => encoderPanOUT
-	-- );
-
 	encoderPan : entity work.QuadratureEncoder
-	generic map(
-		maxValue => 16000
-	)
+	-- generic map(
+	-- 	len => 16000
+	-- )
 	port map(
 		clock    => clk,
 		reset    => reset,
-		encoder_in_a  => encoder1A,
-		encoder_in_b => encoder1B,
-		encoder_out => encoderPanOUT
+		a  => encoder1A,
+		b => encoder1B,
+		position => encoderPanOUT
 	);
 
-	-- encoderTilt : entity work.QuadratureEncoder
-	-- -- generic map(
-	-- -- 	len => 16000
-	-- -- )
-	-- port map(
-	-- 	clock    => clk,
-	-- 	rst    => reset,
-	-- 	a  => encoder2A,
-	-- 	b => encoder2B,
-	-- 	position => encoderTiltOUT
-	-- );
-
 	encoderTilt : entity work.QuadratureEncoder
-	generic map(
-		maxValue => 16000
-	)
+	-- generic map(
+	-- 	len => 16000
+	-- )
 	port map(
 		clock    => clk,
 		reset    => reset,
-		encoder_in_a  => encoder2A,
-		encoder_in_b => encoder2B,
-		encoder_out => encoderTiltOUT
+		a  => encoder2A,
+		b => encoder2B,
+		position => encoderTiltOUT
 	);
 
 	pwmPan : entity work.PulseWidthModulator
@@ -138,8 +114,8 @@ begin
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem(17 downto 10),
-		direction => mem(30),
+		dutyCycle  => mem(15 downto 8),
+		direction => mem(16),
 		pwmOut => pwmOutputPan,
 		pwmAOut => pwmDirAPan,
 		pwmBOut => pwmDirBPan
@@ -154,7 +130,7 @@ begin
 		clk    => clk,
 		rst    => reset,
 		dutyCycle  => mem(7 downto 0),
-		direction => mem(31),
+		direction => mem(17),
 		pwmOut => pwmOutputTilt,
 		pwmAOut => pwmDirATilt,
 		pwmBOut => pwmDirBTilt

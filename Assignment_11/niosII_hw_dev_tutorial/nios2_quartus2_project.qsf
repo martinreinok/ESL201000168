@@ -1,4 +1,4 @@
-set_global_assignment -name FIT_ATTEMPTS_TO_SKIP 0.0
+set_global_assignment -name FIT_ATTEMPTS_TO_SKIP 0
 # Copyright (C) 1991-2005 Altera Corporation
 # Your use of Altera Corporation's design tools, logic functions 
 # and other software and tools, and its AMPP partner logic       

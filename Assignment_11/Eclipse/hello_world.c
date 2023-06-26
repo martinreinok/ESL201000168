@@ -236,9 +236,13 @@
 #include <string.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <time.h>     
+#include <alt_types.h>
+#include <inttypes.h>
 #include <stdint.h>
 #include <float.h>
 #include "io.h"
+#include <stdbool.h>
 
 /* 20-sim include files */
 #include "Pansubmod.h"
@@ -255,7 +259,7 @@ int convertToPwm(XXDouble pidOutput) {
 }
 
 float convertPanToRadian(int panEncoderInput) {
-	const int countsPerRev = 2000;
+	const int countsPerRev = 5000;
 	const int centerPos = countsPerRev / 2;
 	const float countPerDeg = (float)countsPerRev / 360;
 
@@ -265,11 +269,11 @@ float convertPanToRadian(int panEncoderInput) {
 	//printf("degToRadian Tilt: %f \n", degToRadian);
 
 	/* Calculation */
-	return (float)(panEncoderInput - centerPos) * (degToRadian / countPerDeg);
+	return (float) (panEncoderInput - centerPos) * (degToRadian / countPerDeg);
 }
 
 float convertTiltToRadian(int tiltEncoderInput) {
-	const int countsPerRev = 500;
+	const int countsPerRev = 2000;
 	const int centerPos = countsPerRev / 2;
 	const float countPerDeg = (float)countsPerRev / 360;
 
@@ -299,126 +303,209 @@ int main() {
 	XXDouble u_Pan[2 + 1];
 	XXDouble y_Pan[2 + 1];
 
+	int EncoderAxis = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+	int encoderPan = EncoderAxis >> 16;
+	int temp = EncoderAxis << 16;
+	int encoderTilt = temp >> 16;
+
 	/* Initialize the inputs and outputs of TIlt controller with correct initial values */
 	u_Tilt[0] = 0.0;		/* corr */
-	u_Tilt[1] = 1.0;		/* in */
+	//u_Tilt[1] = convertPanToRadian(encoderTilt);		/* in */
+	//u_Tilt[2] = convertPanToRadian(encoderTilt);		/* position */
+	u_Tilt[1] = 0.0;		/* in */
 	u_Tilt[2] = 0.0;		/* position */
 
 	y_Tilt[0] = 0.0;		/* out */
 
 	/* Initialize the inputs and outputs of Pan Controller with correct initial values */
-	u_Pan[0] = 1.0;		/* in */
+	//u_Pan[0] = convertPanToRadian(encoderPan);		/* in */
+	//u_Pan[1] = convertPanToRadian(encoderPan);		/* position */
+	u_Pan[0] = 0.0;		/* in */
 	u_Pan[1] = 0.0;		/* position */
 
 	y_Pan[0] = 0.0;		/* corr */
 	y_Pan[1] = 0.0;		/* out */
 
 	/* Initialize the submodel itself */
-	//TiltInitializeSubmodel(u_Tilt, y_Tilt, Tilt_time);
+	printf("Starting PID loop");
+	TiltInitializeSubmodel(u_Tilt, y_Tilt, Tilt_time);
 	PanInitializeSubmodel(u_Pan, y_Pan, Pan_time);
 
     int file;
     char read_buffer[16];
-    //char echo_back = "DE0";
-    //file = open("dev/uart_0", O_RDWR);
+    // char echo_back = "DE0";
+    // file = open("dev/uart_0", O_RDWR);
 
     // if (file) {
     // 	while (1) {
-    // 	        read(file, &read_buffer, 3);
-    // 	        // write(file, &echo_back, 3);
-    // 	        usleep(10000000);
-    // 	        printf("%c \n", read_buffer);
+	// 		read(file, &read_buffer, 3);
+	// 		// write(file, &echo_back, 3);
+	// 		usleep(10000000);
+	// 		printf("%c \n", read_buffer);
 
-	// 			while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
-	// 			{
-	// 				int EncoderAxisPan = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
-	// 				//generate inputs
-	// 				u_Pan[1] = 0;
-	// 				if(Pan_time >= 1){
-	// 					u_Pan[1] = 0.5*PI;
+	// 		//////////////////////////////////
+	// 		// MODIFY THIS
+	// 		float posTilt = (float)read_buffer[0];
+	// 		float posPan = (float)read_buffer[1];
+	// 		/////////////////////////////////
+			
+	// 		EncoderAxis = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+	// 		encoderPan = EncoderAxis >> 16;
+	// 		temp = EncoderAxis << 16;
+	// 		encoderTilt = temp >> 16;
 
-	// 				}
-	// 				if(Pan_time >= 5){
-	// 					u_Pan[1] = 1.5*PI;
+	// 		u_Pan[0] = convertPanToRadian(encoderPan);
+	// 		u_tilt[0] = y_Pan[0];
+	// 		u_Tilt[1] = convertTiltToRadian(encoderTilt);
 
-	// 				}
-	// 				if(Pan_time >= 10){
+	// 		//printf("Data: %d \n", (int)u_Pan[0]*10000);
+	// 		//printf("Pan encoder: %d \n", (int)encoderPan);
+	// 		//printf("Pan tilt: %d \n", (int)encoderTilt);
 
-	// 					u_Pan[1] = 0.5*PI;
+	// 		//usleep(10000);
+	// 		u_Pan[1] = posPan;
+	// 		u_Tilt[2] = posTilt;
 
-	// 				}
+	// 		curTimeTilt = clock();
+	// 		if ((float)(curTimeTilt - startTimeTilt)/CLOCKS_PER_SEC >= Tilt_step_size) {
+	// 			TiltCalculateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+	// 			startTimeTilt = curTimeTilt;
+	// 		}
+	// 		curTimePan = clock();
+	// 		if ((float)(curTimePan - startTimePan)/CLOCKS_PER_SEC >= Pan_step_size) {
+	// 			PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
+	// 			startTimePan = curTimePan;
+	// 		}
+			
+	// 		int pwmPan = convertToPwm(y_Pan[1]);
+	// 		int pwmTilt = convertToPwm(y_Tilt[0]);
 
-	// 				u_Pan[2] = convertPanToRadian(EncoderAxisPan);
-					
-	// 				/* Call the submodel to calculate the output */
-	// 				if (Tilt_stop_simulation == XXFALSE)
-	// 				{
-	// 					TiltCalculateSubmodel(u_Tilt, y_Tilt, Tilt_time);
-	// 				}
+	// 		int panDir = 0;
+	// 		if (pwmPan < 0) {
+	// 			panDir = 1;
+	// 		}
+	// 		int tiltDir = 0;
+	// 		if (pwmTilt < 0) {
+	// 			tiltDir = 1;
+	// 		}
 
-	// 				if (Pan_stop_simulation == XXFALSE)
-	// 				{
-	// 					PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
-	// 				}	
+	// 		pwmPan = abs(pwmPan);
+	// 		pwmTilt = abs(pwmTilt);
 
-	// 				pwmPan = convertToPwm(y_Pan[1])
-	// 				printf("To the IP: %u \n\r", pwmPan);
-	// 				IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
-	// 			}
+	// 		// printf("Pan direction: %d \n", panDir);
+	// 		// printf("Pan pwm: %d \n", pwmPan);
 
-	// 			/* Perform the final calculations */
-	// 			TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
-	// 			PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
-    // 	    }
-    	   
+	// 		uint32_t message = 0;
+	// 		message = tiltDir << 31 | panDir << 30 | pwmPan << 10 | pwmTilt;
+
+	// 		//printf("To the IP: %u \n\r", message);
+	// 		IOWR(ESL_BUS_DEMO_0_BASE, 0x00, message);
+    // 	}
+	// 	TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+	// 	PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);   
     // }
 
-	while (1) {
-			//read(file, &read_buffer, 3);
-			// write(file, &echo_back, 3);
-			//usleep(10000000);
-			//printf("%c \n", read_buffer);
-		   printf("test");
+	//read(file, &read_buffer, 3);
+	// write(file, &echo_back, 3);
+	//usleep(10000000);
+	//printf("%c \n", read_buffer);
+	
+	clock_t startTimeTilt, startTimePan, curTimeTilt, curTimePan;
+	startTimeTilt = clock();
+	startTimePan = clock();
+	//while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
+	while (1)//(Pan_time < Pan_finish_time))
+	{
+		EncoderAxis = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
+		encoderPan = EncoderAxis >> 16;
+		temp = EncoderAxis << 16;
+		encoderTilt = temp >> 16;
 
-			//while ((Tilt_time < Tilt_finish_time) || (Pan_time < Pan_finish_time))
-			while ( 1)//(Pan_time < Pan_finish_time))
-			{
-				PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
-				//printf("test2 %d \n", (int)Pan_time);
+		u_Pan[0] = convertPanToRadian(encoderPan);
+		u_tilt[0] = y_Pan[0];
+		u_Tilt[1] = convertTiltToRadian(encoderTilt);
 
-				int EncoderAxis = IORD(ESL_BUS_DEMO_0_BASE, 0x00);
-				int encoderPan = EncoderAxis >> 16;
-				int temp = EncoderAxis << 16;
-				int encoderTilt = temp >> 16;
-				printf("Pan encoder: %d \n", (int)encoderPan);
-				//printf("Pan tilt: %d \n", (int)encoderTilt);
-				usleep(10000);
-				//generate inputs
-				u_Pan[1] = 0;
-				if(Pan_time >= 1){
-					u_Pan[1] = 0.5*PI;
+		//printf("Data: %d \n", (int)u_Pan[0]*10000);
+		//printf("Pan encoder: %d \n", (int)encoderPan);
+		//printf("Pan tilt: %d \n", (int)encoderTilt);
 
-				}
-				if(Pan_time >= 5){
-					u_Pan[1] = 1.5*PI;
+		//usleep(10000);
+		generate inputs
+		u_Pan[1] = 0;
+		u_Tilt[2] = 0;
+		if(Pan_time >= 1){
+			u_Pan[1] = 0.5*PI;
 
-				}
-				if(Pan_time >= 10){
+		}
+		if(Pan_time >= 5){
+			u_Pan[1] = 1.0*PI;
 
-					u_Pan[1] = 0.5*PI;
-				}
+		}
+		if(Pan_time >= 10){
 
-				int pwmPan = convertToPwm(y_Pan[1]);
+			u_Pan[1] = -1.0*PI;
+		}
+		if(Pan_time >= 15){
 
-				//printf("To the IP: %u \n\r", pwmPan);
-				IOWR(ESL_BUS_DEMO_0_BASE, 0x00, 1 << 31 | pwmPan);
+			Pan_time = 0.0;
+		}
 
-				/* Perform the final calculations */
-				//TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
-				PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);
-    	    }
-    	   
-    }
+		if(Tilt_time >= 1){
+			u_Tilt[2] = 0.5*PI;
+
+		}
+		if(Tilt_time >= 5){
+			u_Tilt[2] = -0.5*PI;
+
+		}
+		if(Tilt_time >= 10){
+
+			u_Tilt[2] = 0.0;
+		}
+		if(Tilt_time >= 15){
+
+			Tilt_time = 0.0;
+		}
+
+		curTimeTilt = clock();
+		if ((float)(curTimeTilt - startTimeTilt)/CLOCKS_PER_SEC >= Tilt_step_size) {
+			TiltCalculateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+			startTimeTilt = curTimeTilt;
+		}
+		curTimePan = clock();
+		if ((float)(curTimePan - startTimePan)/CLOCKS_PER_SEC >= Pan_step_size) {
+			PanCalculateSubmodel(u_Pan, y_Pan, Pan_time);
+			startTimePan = curTimePan;
+		}
+		
+		int pwmPan = convertToPwm(y_Pan[1]);
+		int pwmTilt = convertToPwm(y_Tilt[0]);
+
+		int panDir = 0;
+		if (pwmPan < 0) {
+			panDir = 1;
+		}
+		int tiltDir = 0;
+		if (pwmTilt < 0) {
+			tiltDir = 1;
+		}
+
+		pwmPan = abs(pwmPan);
+		pwmTilt = abs(pwmTilt);
+
+		// printf("Pan direction: %d \n", panDir);
+		// printf("Pan pwm: %d \n", pwmPan);
+
+		uint32_t message = 0;
+		message = tiltDir << 31 | panDir << 30 | pwmPan << 10 | pwmTilt;
+
+		//printf("To the IP: %u \n\r", message);
+		IOWR(ESL_BUS_DEMO_0_BASE, 0x00, message);	
+	}
+	/* Perform the final calculations */
+	TiltTerminateSubmodel(u_Tilt, y_Tilt, Tilt_time);
+	PanTerminateSubmodel(u_Pan, y_Pan, Pan_time);   
+
 	
     printf("File closed");
     return 0;

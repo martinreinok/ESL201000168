@@ -1,3 +1,0 @@
-/mnt/c/Users/Cs/Desktop/Embedded Systems Laboratory/ESL201000168/Assignment_11_rpi/build/CMakeFiles/20sim-pi.dir
-/mnt/c/Users/Cs/Desktop/Embedded Systems Laboratory/ESL201000168/Assignment_11_rpi/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Cs/Desktop/Embedded Systems Laboratory/ESL201000168/Assignment_11_rpi/build/CMakeFiles/rebuild_cache.dir

@@ -1,5 +1,5 @@
 Flow report for nios2_quartus2_project
-Tue Jun 20 14:29:27 2023
+Wed Jun 21 11:30:25 2023
 Quartus II 32-bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,20 +40,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Tue Jun 20 14:29:22 2023      ;
+; Flow Status                        ; Successful - Wed Jun 21 11:30:20 2023      ;
 ; Quartus II 32-bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; nios2_quartus2_project                     ;
 ; Top-level Entity Name              ; nios2_quartus2_project                     ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE22F17C6                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 2,567 / 22,320 ( 12 % )                    ;
-;     Total combinational functions  ; 2,361 / 22,320 ( 11 % )                    ;
+; Total logic elements               ; 2,633 / 22,320 ( 12 % )                    ;
+;     Total combinational functions  ; 2,425 / 22,320 ( 11 % )                    ;
 ;     Dedicated logic registers      ; 1,583 / 22,320 ( 7 % )                     ;
 ; Total registers                    ; 1583                                       ;
 ; Total pins                         ; 13 / 154 ( 8 % )                           ;
 ; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 192,384 / 608,256 ( 32 % )                 ;
+; Total memory bits                  ; 290,688 / 608,256 ( 48 % )                 ;
 ; Embedded Multiplier 9-bit elements ; 0 / 132 ( 0 % )                            ;
 ; Total PLLs                         ; 0 / 4 ( 0 % )                              ;
 +------------------------------------+--------------------------------------------+
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+------------------------+
 ; Option            ; Setting                ;
 +-------------------+------------------------+
-; Start date & time ; 06/20/2023 14:25:51    ;
+; Start date & time ; 06/21/2023 11:29:43    ;
 ; Main task         ; Compilation            ;
 ; Revision Name     ; nios2_quartus2_project ;
 +-------------------+------------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------------------------------------------------+------------+
 ; Assignment Name                     ; Value                                                              ; Default Value ; Entity Name                                           ; Section Id ;
 +-------------------------------------+--------------------------------------------------------------------+---------------+-------------------------------------------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 0.168726395120286                                                  ; --            ; --                                                    ; --         ;
+; COMPILER_SIGNATURE_ID               ; 0.168733978331745                                                  ; --            ; --                                                    ; --         ;
 ; FIT_ATTEMPTS_TO_SKIP                ; 0                                                                  ; 0.0           ; --                                                    ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                               ; --            ; Assignment4_Qsys                                      ; --         ;
 ; IP_TOOL_ENV                         ; Qsys                                                               ; --            ; Assignment4_Qsys_cpu                                  ; --         ;
@@ -176,7 +176,7 @@ applicable agreement for further details.
 ; POWER_PRESET_COOLING_SOLUTION       ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW                              ; --            ; --                                                    ; --         ;
 ; SLD_FILE                            ; Assignment4_Qsys/synthesis/Assignment4_Qsys.regmap                 ; --            ; --                                                    ; --         ;
 ; SLD_FILE                            ; Assignment4_Qsys/synthesis/Assignment4_Qsys.debuginfo              ; --            ; --                                                    ; --         ;
-; SLD_INFO                            ; QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1687263851 ; --            ; Assignment4_Qsys                                      ; --         ;
+; SLD_INFO                            ; QSYS_NAME Assignment4_Qsys HAS_SOPCINFO 1 GENERATION_ID 1687339752 ; --            ; Assignment4_Qsys                                      ; --         ;
 ; SMART_RECOMPILE                     ; On                                                                 ; Off           ; --                                                    ; --         ;
 ; SOPCINFO_FILE                       ; Assignment4_Qsys/synthesis/../../Assignment4_Qsys.sopcinfo         ; --            ; --                                                    ; --         ;
 ; SYNTHESIS_ONLY_QIP                  ; On                                                                 ; --            ; --                                                    ; --         ;
@@ -188,15 +188,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 507 MB              ; 00:00:12                           ;
+; Analysis & Synthesis      ; 00:00:13     ; 1.0                     ; 503 MB              ; 00:00:12                           ;
 ; Fitter                    ; 00:00:17     ; 1.4                     ; 733 MB              ; 00:00:20                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 383 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 489 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:05     ; 1.0                     ; 420 MB              ; 00:00:04                           ;
-; Fitter                    ; 00:00:18     ; 1.2                     ; 739 MB              ; 00:00:21                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 387 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 505 MB              ; 00:00:04                           ;
-; Total                     ; 00:01:04     ; --                      ; --                  ; 00:01:09                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 387 MB              ; 00:00:02                           ;
+; TimeQuest Timing Analyzer ; 00:00:04     ; 1.0                     ; 501 MB              ; 00:00:04                           ;
+; Total                     ; 00:00:37     ; --                      ; --                  ; 00:00:38                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -209,10 +205,6 @@ applicable agreement for further details.
 ; Fitter                    ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
 ; Assembler                 ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
 ; TimeQuest Timing Analyzer ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
-; Fitter                    ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
-; Fitter                    ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
-; Assembler                 ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
-; TimeQuest Timing Analyzer ; ce135            ; Debian GNU/Linux ; 9          ; x86_64         ;
 +---------------------------+------------------+------------------+------------+----------------+
 
 
@@ -221,10 +213,6 @@ applicable agreement for further details.
 ------------
 quartus_map --read_settings_files=on --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
 quartus_fit --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
-quartus_asm --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
-quartus_sta nios2_quartus2_project -c nios2_quartus2_project
-quartus_fit --read_settings_files=on --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
-quartus_fit --read_settings_files=on --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
 quartus_asm --read_settings_files=off --write_settings_files=off nios2_quartus2_project -c nios2_quartus2_project
 quartus_sta nios2_quartus2_project -c nios2_quartus2_project
 

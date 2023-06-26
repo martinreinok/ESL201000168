@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'Assignment4_Qsys'
  * SOPC Builder design path: /home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo
  *
- * Generated: Tue Jun 20 14:30:02 CEST 2023
+ * Generated: Wed Jun 21 11:31:03 CEST 2023
  */
 
 /*
@@ -233,8 +233,8 @@
 #define ONCHIP_MEM_READ_DURING_WRITE_MODE "DONT_CARE"
 #define ONCHIP_MEM_SINGLE_CLOCK_OP 0
 #define ONCHIP_MEM_SIZE_MULTIPLE 1
-#define ONCHIP_MEM_SIZE_VALUE 20480
-#define ONCHIP_MEM_SPAN 20480
+#define ONCHIP_MEM_SIZE_VALUE 32768
+#define ONCHIP_MEM_SPAN 32768
 #define ONCHIP_MEM_TYPE "altera_avalon_onchip_memory2"
 #define ONCHIP_MEM_WRITABLE 1
 
@@ -277,7 +277,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1687263851
+#define SYSID_TIMESTAMP 1687339752
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 
@@ -287,7 +287,7 @@
  */
 
 #define ALT_MODULE_CLASS_uart_0 altera_avalon_uart
-#define UART_0_BASE 0x0
+#define UART_0_BASE 0x11400
 #define UART_0_BAUD 115200
 #define UART_0_DATA_BITS 8
 #define UART_0_FIXED_BAUD 1

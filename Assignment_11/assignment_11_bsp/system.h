@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu' in SOPC Builder design 'Assignment4_Qsys'
  * SOPC Builder design path: /home/esl1-5/Desktop/ESL201000168/Assignment_11/niosII_hw_dev_tutorial/Assignment4_Qsys.sopcinfo
  *
- * Generated: Wed Jun 21 11:31:03 CEST 2023
+ * Generated: Wed Jun 28 16:14:33 CEST 2023
  */
 
 /*
@@ -277,7 +277,7 @@
 #define SYSID_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define SYSID_NAME "/dev/sysid"
 #define SYSID_SPAN 8
-#define SYSID_TIMESTAMP 1687339752
+#define SYSID_TIMESTAMP 1687961550
 #define SYSID_TYPE "altera_avalon_sysid_qsys"
 
 

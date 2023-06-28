@@ -61,6 +61,7 @@ architecture behavior of esl_bus_demo is
 	signal mem_masked : std_logic_vector(LED_WIDTH-1 downto 0);
 	signal encoderPanOUT : std_logic_vector(15 downto 0);
 	signal encoderTiltOUT : std_logic_vector(15 downto 0);
+	signal pwmFrequency : integer range 0 to 50000000 := 20000;
 	-- signal encoderPanOUT : integer RANGE -8192 TO 8191;
 	-- signal encoderTiltOUT : integer RANGE -8192 TO 8191;
 	--signal encoderPanOut     : std_logic_vector(15 downto 0);
@@ -130,30 +131,52 @@ begin
 		encoder_out => encoderTiltOUT
 	);
 
+	-- pwmPan : entity work.PulseWidthModulator
+	-- generic map(
+	-- 	pwmBits => 8,
+	-- 	clockDivider => 100
+	-- )
+	-- port map(
+	-- 	clk    => clk,
+	-- 	rst    => reset,
+	-- 	dutyCycle  => mem(17 downto 10),
+	-- 	direction => mem(30),
+	-- 	pwmOut => pwmOutputPan,
+	-- 	pwmAOut => pwmDirAPan,
+	-- 	pwmBOut => pwmDirBPan
+	-- );
 	pwmPan : entity work.PulseWidthModulator
-	generic map(
-		pwmBits => 8,
-		clockDivider => 100
-	)
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem(15 downto 8),
+		frequency => pwmFrequency,
+		dutyCycle  => to_integer(signed(mem(17 downto 10))),
 		direction => mem(30),
 		pwmOut => pwmOutputPan,
 		pwmAOut => pwmDirAPan,
 		pwmBOut => pwmDirBPan
 	);
 
+	-- pwmTilt : entity work.PulseWidthModulator
+	-- generic map(
+	-- 	pwmBits => 8,
+	-- 	clockDivider => 100
+	-- )
+	-- port map(
+	-- 	clk    => clk,
+	-- 	rst    => reset,
+	-- 	dutyCycle  => mem(7 downto 0),
+	-- 	direction => mem(31),
+	-- 	pwmOut => pwmOutputTilt,
+	-- 	pwmAOut => pwmDirATilt,
+	-- 	pwmBOut => pwmDirBTilt
+	-- );
 	pwmTilt : entity work.PulseWidthModulator
-	generic map(
-		pwmBits => 8,
-		clockDivider => 100
-	)
 	port map(
 		clk    => clk,
 		rst    => reset,
-		dutyCycle  => mem(7 downto 0),
+		frequency => pwmFrequency,
+		dutyCycle  => to_integer(signed(mem(7 downto 0))),
 		direction => mem(31),
 		pwmOut => pwmOutputTilt,
 		pwmAOut => pwmDirATilt,

@@ -110,7 +110,7 @@ void PanModelInitialize_parameters(void)
 {
 	/* set the parameters */
 	Pan_P[0] = 0.0;		/* corrGain\K */
-	Pan_P[1] = 2.6;		/* PID1\kp */
+	Pan_P[1] = 0.1;		/* PID1\kp */
 	Pan_P[2] = 0.05;		/* PID1\tauD */
 	Pan_P[3] = 0.17;		/* PID1\beta */
 	Pan_P[4] = 9.0;		/* PID1\tauI */

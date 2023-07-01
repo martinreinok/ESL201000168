@@ -57,7 +57,7 @@ begin
   begin
   
 		FOR i IN 0 to 10 LOOP
-			 GPIO_1 <= std_logic_vector(to_unsigned(i*5, 8));
+			 GPIO_1 <= std_logic_vector(to_unsigned(i*12, 8));
 			 wait for 2560 ns;
 			 --wait for i * 20 ns;
 		END LOOP;

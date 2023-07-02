@@ -38,7 +38,7 @@ float convertPanToRadian(int panEncoderInput) {
 }
 
 float convertTiltToRadian(int tiltEncoderInput) {
-	const int countsPerRev = 2000;
+	const int countsPerRev = 1250;
 	const int centerPos = countsPerRev / 2;
 	const float countPerDeg = (float)countsPerRev / 360;
 
